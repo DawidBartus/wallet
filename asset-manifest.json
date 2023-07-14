@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.da6e2985.css",
-    "main.js": "/static/js/main.b743acf9.js",
-    "static/js/787.e5dc3531.chunk.js": "/static/js/787.e5dc3531.chunk.js",
-    "index.html": "/index.html",
-    "static/media/notPurpleBlob.svg": "/static/media/notPurpleBlob.5040429af0d6909b1c1d1320a86affb2.svg",
-    "static/media/purpleBlob.svg": "/static/media/purpleBlob.3baa37eb30b32236724d1259a060175f.svg",
-    "main.da6e2985.css.map": "/static/css/main.da6e2985.css.map",
-    "main.b743acf9.js.map": "/static/js/main.b743acf9.js.map",
-    "787.e5dc3531.chunk.js.map": "/static/js/787.e5dc3531.chunk.js.map"
+    "main.css": "/wallet/static/css/main.da6e2985.css",
+    "main.js": "/wallet/static/js/main.d0ff4808.js",
+    "static/js/787.e5dc3531.chunk.js": "/wallet/static/js/787.e5dc3531.chunk.js",
+    "index.html": "/wallet/index.html",
+    "static/media/notPurpleBlob.svg": "/wallet/static/media/notPurpleBlob.5040429af0d6909b1c1d1320a86affb2.svg",
+    "static/media/purpleBlob.svg": "/wallet/static/media/purpleBlob.3baa37eb30b32236724d1259a060175f.svg",
+    "main.da6e2985.css.map": "/wallet/static/css/main.da6e2985.css.map",
+    "main.d0ff4808.js.map": "/wallet/static/js/main.d0ff4808.js.map",
+    "787.e5dc3531.chunk.js.map": "/wallet/static/js/787.e5dc3531.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.da6e2985.css",
-    "static/js/main.b743acf9.js"
+    "static/js/main.d0ff4808.js"
   ]
 }

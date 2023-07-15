@@ -22,6 +22,7 @@ const StyledSVG = styled.svg`
     width: 100%;
     max-width: 435px;
     height: 420px;
+    overflow: visible;
   }
 `;
 

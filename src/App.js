@@ -1,10 +1,12 @@
 import "./App.css";
 import Background from "./components/Background/Background";
+import LogInForm from "./components/LoginForm/LogInForm";
+
 function App() {
   return (
     <>
-      <p style={{ fontSize: "36px", textAlign: "center" }}>Cześć</p>
       <Background />
+      <LogInForm />
     </>
   );
 }

@@ -3,35 +3,61 @@ import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { ReactComponent as Wallet } from "../images/wallet.svg";
 import ShoppingMan from "../images/shoppingMan/ShoppingMan";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
-import { useEffect, useState } from "react";
-import FormBlurBackground from "../Background/FormBlurBackground";
+import StyledFormBlurBackground from "../Background/FormBlurBackground";
+import styled from "styled-components";
 
-const boxCSS = {
-  display: "flex",
-  flexDirection: "column",
-  backgroundColor: "white.main",
-  alignItems: "center",
-  borderRadius: "20px",
-  height: "100vh",
-  width: "100%",
-  maxWidth: "533px",
-  maxHeight: "468px",
-  justifyContent: "space-between",
-  padding: "40px 60px 60px",
-};
-const svgBasicStyles = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  width: "100%",
-  maxWidth: "550px",
-  paddingTop: "60px",
-  maxHeight: "600px",
-};
-const svgNNotMobileStyles = {
-  flexDirection: "column",
-  gap: 30,
-};
+const StyledSection = styled.section`
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+const StyledFormBox = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  height: 100vh;
+  width: 100%;
+  max-width: 408px;
+  max-height: 366px;
+  justify-content: space-evenly;
+
+  @media (max-width: 482px) {
+    padding: 113px 20px 107px;
+  }
+  @media (min-width: 482px) {
+    background-color: #fff;
+    padding: 40px 60px 60px;
+    margin-top: 50px;
+  }
+`;
+const StyledBoxWithMainSVG = styled(Box)`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 550px;
+  padding-top: 60px;
+  max-height: 600px;
+
+  @media (max-width: 482px) {
+    display: none;
+  }
+  @media (min-width: 769px) {
+    flex-direction: column;
+    gap: 30px;
+  }
+`;
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -39,73 +65,17 @@ const handleSubmit = (e) => {
 };
 
 const LogInForm = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
-  }, []);
-
-  const registerWindowPadding =
-    width <= 768 ? { paddingTop: "107px" } : { paddingTop: "40px" };
-
-  const sectionFlex =
-    width <= 768
-      ? {
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
-        }
-      : {
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        };
-
-  const backgroundBlur =
-    width >= 768
-      ? {
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: "rgba(255, 255, 255, 0.40)",
-          alignItems: "center",
-        }
-      : {
-          backgroundColor: "none",
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          margin: "30px",
-        };
-
-  const isMobileStyle = width >= 768 ? true : false;
-  const isPhoneStyle = width >= 600 ? true : false;
-  const svgContainerMobile = width >= 768 ? svgNNotMobileStyles : "";
-  const svgIconHolder = { ...svgBasicStyles, ...svgContainerMobile };
-
   return (
-    <section style={sectionFlex}>
-      <span style={svgIconHolder}>
-        {isPhoneStyle ? <ShoppingMan isMobile={isMobileStyle} /> : ""}
-        {isPhoneStyle ? (
-          <Typography variant="header" style={{ fontWeight: 400 }}>
-            Finance App
-          </Typography>
-        ) : (
-          ""
-        )}
-      </span>
-      <FormBlurBackground style={backgroundBlur}>
-        <Box component="form" onSubmit={handleSubmit} sx={boxCSS}>
-          <Typography variant="header" style={registerWindowPadding}>
+    <StyledSection>
+      <StyledBoxWithMainSVG component="div">
+        <ShoppingMan />
+        <Typography variant="header" style={{ fontWeight: 400 }}>
+          Finance App
+        </Typography>
+      </StyledBoxWithMainSVG>
+      <StyledFormBlurBackground>
+        <StyledFormBox component="form" onSubmit={handleSubmit}>
+          <Typography variant="header">
             <Wallet style={{ paddingRight: "20px" }} />
             Wallet
           </Typography>
@@ -129,12 +99,35 @@ const LogInForm = () => {
             }
             style={{ width: "100%" }}
           />
-          <Button variant="contained" type="submit">
+          <Button
+            variant="contained"
+            type="submit"
+            style={{
+              padding: "13px 0",
+              borderRadius: "20px",
+              color: "#FFFFFF",
+              width: "300px",
+            }}
+          >
             Log In
           </Button>
-        </Box>
-      </FormBlurBackground>
-    </section>
+          <Button
+            variant="outlined"
+            color="info"
+            type="submit"
+            style={{
+              padding: "13px 0",
+              borderRadius: "20px",
+              width: "100%",
+              minWidth: "280px",
+              maxWidth: "300px",
+            }}
+          >
+            Register
+          </Button>
+        </StyledFormBox>
+      </StyledFormBlurBackground>
+    </StyledSection>
   );
 };
 

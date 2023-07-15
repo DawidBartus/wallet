@@ -27,7 +27,7 @@
     animation: fade-out 1s forwards;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 482px) {
   .purpleBlob,
   .notPurpleBlob,
   .background {

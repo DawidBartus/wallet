@@ -14,9 +14,6 @@ const theme = createTheme({
     blur: {
       main: "rgba(255, 255, 255, 0.40)",
     },
-    white: {
-      main: "#FFF",
-    },
     icon: {
       main: "#E0E0E0",
     },

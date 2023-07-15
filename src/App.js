@@ -7,6 +7,7 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<LogInForm />} />
       <Route path="/login" element={<LogInForm />} />
       <Route path="/register" element={<RegisterForm />} />
     </Routes>

@@ -1,17 +1,26 @@
 {
   "files": {
-    "main.css": "/wallet/static/css/main.da6e2985.css",
-    "main.js": "/wallet/static/js/main.d0ff4808.js",
+    "main.css": "/wallet/static/css/main.f6cc09d1.css",
+    "main.js": "/wallet/static/js/main.82de22a1.js",
     "static/js/787.e5dc3531.chunk.js": "/wallet/static/js/787.e5dc3531.chunk.js",
+    "static/media/phone.svg": "/wallet/static/media/phone.b022db6a7f8c103c8287ee7d2f3a4ac0.svg",
+    "static/media/shoppingMan.svg": "/wallet/static/media/shoppingMan.b702d38eee11f848679466fa5e8cd8cd.svg",
+    "static/media/card.svg": "/wallet/static/media/card.657533a3ed1c8e9eaf018de1931dc89e.svg",
+    "static/media/flower.svg": "/wallet/static/media/flower.369b0d1b3e8d64eec64ef97212f24a05.svg",
+    "static/media/iconShoppingCart.svg": "/wallet/static/media/iconShoppingCart.bdfdf908e8244a9a387ef6052b5d71c3.svg",
+    "static/media/wallet.svg": "/wallet/static/media/wallet.3712e11df162337c2d647916b920f35b.svg",
+    "static/media/iconDollar.svg": "/wallet/static/media/iconDollar.6bd8ace7d1b2c9e564ccf06705b3c4d9.svg",
     "index.html": "/wallet/index.html",
+    "static/media/underFlowerDot.svg": "/wallet/static/media/underFlowerDot.c529ddcade04f9f729ff518ea8971aee.svg",
     "static/media/notPurpleBlob.svg": "/wallet/static/media/notPurpleBlob.5040429af0d6909b1c1d1320a86affb2.svg",
     "static/media/purpleBlob.svg": "/wallet/static/media/purpleBlob.3baa37eb30b32236724d1259a060175f.svg",
-    "main.da6e2985.css.map": "/wallet/static/css/main.da6e2985.css.map",
-    "main.d0ff4808.js.map": "/wallet/static/js/main.d0ff4808.js.map",
+    "static/media/underManDot.svg": "/wallet/static/media/underManDot.efa5c690aef3215db7439fa1e5601798.svg",
+    "main.f6cc09d1.css.map": "/wallet/static/css/main.f6cc09d1.css.map",
+    "main.82de22a1.js.map": "/wallet/static/js/main.82de22a1.js.map",
     "787.e5dc3531.chunk.js.map": "/wallet/static/js/787.e5dc3531.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.da6e2985.css",
-    "static/js/main.d0ff4808.js"
+    "static/css/main.f6cc09d1.css",
+    "static/js/main.82de22a1.js"
   ]
 }

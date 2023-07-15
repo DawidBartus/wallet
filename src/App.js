@@ -1,13 +1,15 @@
 import "./App.css";
-import Background from "./components/Background/Background";
+import { Route, Routes } from "react-router-dom";
+
 import LogInForm from "./components/LoginForm/LogInForm";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 function App() {
   return (
-    <>
-      <Background />
-      <LogInForm />
-    </>
+    <Routes>
+      <Route path="/login" element={<LogInForm />} />
+      <Route path="/register" element={<RegisterForm />} />
+    </Routes>
   );
 }
 

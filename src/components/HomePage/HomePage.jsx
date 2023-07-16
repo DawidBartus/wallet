@@ -4,9 +4,9 @@ import { ReactComponent as Home } from "../images/home.svg";
 import { ReactComponent as Statistic } from "../images/stats.svg";
 import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
-// import { useEffect } from "react";
 import { balance } from "../../devUtils/devVariable";
 import StyledReactLink from "../StyledComponents/StyledReactLink";
+import Currency from "../Currency/Currency";
 
 const StyledHomeIcon = styled(Home)`
   width: 44px;
@@ -52,8 +52,6 @@ const IconHolder = styled(Box)`
   padding-bottom: 13px;
 `;
 const BalanceSection = styled(Box)`
-  width: 100%;
-  min-width: 280px;
   max-width: 400px;
   background-color: #ffffff;
   border-radius: 30px;
@@ -62,21 +60,24 @@ const BalanceSection = styled(Box)`
 
 const HomePage = () => {
   const location = useLocation();
-  console.log(location.pathname);
+
   const shouldBeActiveHome =
     location.pathname === "/home" ? "current" : "available";
   const shouldBeActiveStat =
     location.pathname === "/home/statistic" ? "current" : "available";
 
   return (
-    <Section maxWidth="xl">
+    <Section
+      style={{ maxWidth: "1488px", padding: "0px 24px", height: "100vh" }}
+    >
       <Box
         style={{
           width: "100%",
-          minWidth: "600px",
+          minWidth: "200px",
+          maxWidth: "480px",
           height: "100vh",
           marginTop: "40px",
-          marginLeft: "35px",
+          paddingRight: "24px",
         }}
       >
         <IconHolder>
@@ -97,6 +98,7 @@ const HomePage = () => {
           <Typography style={{ color: "#A6A6A6" }}>Your Balance</Typography>
           <Typography variant="balance">{`$ ${balance}`}</Typography>
         </BalanceSection>
+        <Currency />
       </Box>
       <Box style={{ width: "100%", height: "100vh", backgroundColor: "green" }}>
         <Outlet />

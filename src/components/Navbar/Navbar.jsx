@@ -10,18 +10,8 @@ import { ReactComponent as Wallet } from "../images/wallet.svg";
 import { Outlet } from "react-router-dom";
 import { ReactComponent as Exit } from "../images/exit.svg";
 import StyledFormBlurBackground from "../Background/FormBlurBackground";
-import { useLocation } from "react-router-dom";
 
 const ResponsiveAppBar = () => {
-  const location = useLocation();
-
-  const shouldBeBlur =
-    location.pathname === "/" ||
-    location.pathname === "/login" ||
-    location.pathname === "/register"
-      ? ""
-      : "blur(10px)";
-
   return (
     <>
       <AppBar
@@ -58,7 +48,7 @@ const ResponsiveAppBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <StyledFormBlurBackground blur={shouldBeBlur}>
+      <StyledFormBlurBackground>
         <Outlet />
       </StyledFormBlurBackground>
     </>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledSection = styled.section`
+const Section = styled.section`
   width: 100%;
   @media (max-width: 768px) {
     display: flex;
@@ -15,8 +15,8 @@ const StyledSection = styled.section`
     align-items: center;
   }
 `;
-const Section = (props) => {
-  const { children } = props;
-  return <StyledSection>{children}</StyledSection>;
-};
+// const Section = (props) => {
+//   const { children } = props;
+//   return <StyledSection>{children}</StyledSection>;
+// };
 export default Section;

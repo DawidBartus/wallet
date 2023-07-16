@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const FormBlurBackground = styled(Box)`
@@ -13,16 +14,28 @@ const FormBlurBackground = styled(Box)`
     display: flex;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.4);
-    align-items: center;
-    backdrop-filter: ${(props) => props.shouldBeBlur};
   }
 `;
 
 const StyledFormBlurBackground = (props) => {
-  const { children, blur } = props;
+  const location = useLocation();
+
+  const shouldChangeStyle =
+    location.pathname === "/" ||
+    location.pathname === "/login" ||
+    location.pathname === "/register"
+      ? true
+      : false;
+
+  const { children } = props;
+  const blur = shouldChangeStyle ? "" : "blur(10px)";
+  const align = shouldChangeStyle ? "center" : "flex-start";
 
   return (
-    <FormBlurBackground component="div" style={{ backdropFilter: blur }}>
+    <FormBlurBackground
+      component="div"
+      style={{ backdropFilter: blur, alignItems: align }}
+    >
       {children}
     </FormBlurBackground>
   );

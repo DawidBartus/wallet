@@ -8,30 +8,59 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import { ReactComponent as Wallet } from "../images/wallet.svg";
 import { Outlet } from "react-router-dom";
+import { ReactComponent as Exit } from "../images/exit.svg";
+import StyledFormBlurBackground from "../Background/FormBlurBackground";
+import { useLocation } from "react-router-dom";
 
-const ResponsiveAppBar = (props) => {
-  console.log(props.children);
+const ResponsiveAppBar = () => {
+  const location = useLocation();
+
+  const shouldBeBlur =
+    location.pathname === "/" ||
+    location.pathname === "/login" ||
+    location.pathname === "/register"
+      ? ""
+      : "blur(10px)";
+
   return (
     <>
       <AppBar
         position="static"
-        style={{ backgroundColor: "#FFF", boxShadow: "none" }}
+        style={{
+          backgroundColor: "#FFF",
+          boxShadow: "none",
+        }}
       >
         <Container maxWidth="xl">
-          <Toolbar disableGutters>
+          <Toolbar disableGutters style={{ justifyContent: "space-between" }}>
             <Box component="div">
               <Typography variant="header">
                 <Wallet />
                 Wallet
               </Typography>
             </Box>
-            <IconButton>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-            </IconButton>
+            <Box component="div">
+              <IconButton
+                style={{
+                  borderRight: "1px solid #BDBDBD",
+                  marginRight: "10px",
+                }}
+              >
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+              <IconButton style={{ borderLeft: "1px solid #BDBDBD" }}>
+                <Typography variant="h5" color={"icon.gray"}>
+                  <Exit />
+                  Exit
+                </Typography>
+              </IconButton>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
-      <Outlet />
+      <StyledFormBlurBackground blur={shouldBeBlur}>
+        <Outlet />
+      </StyledFormBlurBackground>
     </>
   );
 };

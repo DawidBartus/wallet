@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage/HomePage";
 import ResponsiveAppBar from "./components/Navbar/Navbar";
 import Statistic from "./components/Statistic/Statistic";
 import Currency from "./components/Currency/Currency";
+import Transaction from "./components/Transaction/Transaction";
 
 function App() {
   return (
@@ -14,9 +15,11 @@ function App() {
       <Route path="/login" element={<LogInForm />} />
       <Route path="/register" element={<RegisterForm />} />
       <Route element={<ResponsiveAppBar />}>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/statistic" element={<Statistic />} />
-        <Route path="/currency" element={<Currency />} />
+        <Route path="/home" element={<HomePage />}>
+          <Route index element={<Transaction />} />
+          <Route path="/home/statistic" element={<Statistic />} />
+          <Route path="/home/currency" element={<Currency />} />
+        </Route>
       </Route>
     </Routes>
   );

@@ -14,11 +14,18 @@ const FormBlurBackground = styled(Box)`
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.4);
     align-items: center;
+    backdrop-filter: ${(props) => props.shouldBeBlur};
   }
 `;
+
 const StyledFormBlurBackground = (props) => {
-  const { children } = props;
-  return <FormBlurBackground component="div">{children}</FormBlurBackground>;
+  const { children, blur } = props;
+
+  return (
+    <FormBlurBackground component="div" style={{ backdropFilter: blur }}>
+      {children}
+    </FormBlurBackground>
+  );
 };
 
 export default StyledFormBlurBackground;

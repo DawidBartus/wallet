@@ -9,7 +9,7 @@ import StyledBoxWithMainSVG from "../StyledComponents/StyledBoxWithMainSVG";
 import MainButton from "../StyledComponents/MainButton";
 import SecondaryButton from "../StyledComponents/SecondaryButton";
 import StyledFormBox from "../StyledComponents/StyledFormBox";
-import LogInFormLink from "../StyledComponents/LogInFormLink";
+import StyledReactLink from "../StyledComponents/StyledReactLink";
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -61,11 +61,16 @@ const LogInForm = () => {
             <MainButton variant="contained" type="submit">
               Log In
             </MainButton>
-            <LogInFormLink to="/register">
+            <StyledReactLink to="/register">
               <SecondaryButton variant="outlined" color="info">
                 Register
               </SecondaryButton>
-            </LogInFormLink>
+            </StyledReactLink>
+            <StyledReactLink to="/home">
+              <SecondaryButton variant="outlined" color="info">
+                DEV ROUTE TO HOME
+              </SecondaryButton>
+            </StyledReactLink>
           </StyledFormBox>
         </StyledFormBlurBackground>
       </Section>

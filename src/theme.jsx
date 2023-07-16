@@ -16,6 +16,7 @@ const theme = createTheme({
     },
     icon: {
       main: "#E0E0E0",
+      gray: "#BDBDBD",
     },
   },
   typography: {
@@ -23,6 +24,20 @@ const theme = createTheme({
       fontSize: 30,
       fontWeight: 700,
       lineHeight: "normal",
+    },
+    balance: {
+      fontSize: 30,
+      fontWeight: 400,
+    },
+    current: {
+      fontSize: 18,
+      color: "#000000",
+      fontWeight: 700,
+    },
+    available: {
+      fontSize: 18,
+      color: "#000000",
+      fontWeight: 400,
     },
   },
 });

@@ -10,7 +10,7 @@ import StyledBoxWithMainSVG from "../StyledComponents/StyledBoxWithMainSVG";
 import MainButton from "../StyledComponents/MainButton";
 import SecondaryButton from "../StyledComponents/SecondaryButton";
 import StyledFormBox from "../StyledComponents/StyledFormBox";
-import LogInFormLink from "../StyledComponents/LogInFormLink";
+import StyledReactLink from "../StyledComponents/StyledReactLink";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const handleSubmit = (e) => {
@@ -76,11 +76,11 @@ const RegisterForm = () => {
           <MainButton variant="contained" type="submit">
             Register
           </MainButton>
-          <LogInFormLink to="/login">
+          <StyledReactLink to="/login">
             <SecondaryButton variant="outlined" color="info">
               Log In
             </SecondaryButton>
-          </LogInFormLink>
+          </StyledReactLink>
         </StyledFormBox>
       </StyledFormBlurBackground>
     </Section>

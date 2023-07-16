@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledSection = styled.section`
+  width: 100%;
   @media (max-width: 768px) {
     display: flex;
     justify-content: center;

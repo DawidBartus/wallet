@@ -1,0 +1,84 @@
+{
+  "transactions": [
+    {
+      "date": "2023-07-01",
+      "type": "income",
+      "category": "salary",
+      "comment": "Monthly salary",
+      "sum": 2500.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-02",
+      "type": "expense",
+      "category": "groceries",
+      "comment": "Weekly groceries",
+      "sum": 75.25,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-03",
+      "type": "income",
+      "category": "tax refund",
+      "comment": "Tax refund for the previous year",
+      "sum": 500.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-05",
+      "type": "expense",
+      "category": "rent",
+      "comment": "Monthly rent payment",
+      "sum": 800.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-08",
+      "type": "income",
+      "category": "sales",
+      "comment": "Sold old furniture",
+      "sum": 150.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-10",
+      "type": "expense",
+      "category": "insurance",
+      "comment": "Car insurance premium",
+      "sum": 200.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-12",
+      "type": "income",
+      "category": "bonus",
+      "comment": "Annual performance bonus",
+      "sum": 1000.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-15",
+      "type": "expense",
+      "category": "dining",
+      "comment": "Dinner at a local restaurant",
+      "sum": 50.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-17",
+      "type": "income",
+      "category": "online sales",
+      "comment": "Sold used electronics",
+      "sum": 300.0,
+      "currency": "USD"
+    },
+    {
+      "date": "2023-07-20",
+      "type": "expense",
+      "category": "utilities",
+      "comment": "Monthly phone and internet bill",
+      "sum": 80.0,
+      "currency": "USD"
+    }
+  ]
+}

@@ -25,6 +25,14 @@ const StyledSVG = styled.svg`
     overflow: visible;
   }
 `;
+const StyledGroup = styled.g`
+  @media (max-width: 768px) {
+    scale: 1;
+  }
+  @media (min-width: 769px) {
+    scale: 1.67;
+  }
+`;
 // const moveRightLeft = keyframes`
 //   0% {
 //     transform: translateX(0) translateY(0);
@@ -52,31 +60,32 @@ const StyledSVG = styled.svg`
 // `;
 const wobble = keyframes`
   0%,
+  2%,
   100% {
     transform: translateX(0%);
     transform-origin: 50% 50%;
   }
 
-  2% {
+  4% {
     transform: translateX(-30px) rotate(-6deg);
   }
 
-  4% {
+  6% {
     transform: translateX(15px) rotate(6deg);
   }
 
-  6% {
+  8% {
     transform: translateX(-15px) rotate(-3.6deg);
   }
 
-  8% {
+  10% {
     transform: translateX(9px) rotate(2.4deg);
   }
 
-  10% {
+  12% {
     transform: translateX(-6px) rotate(-1.2deg);
   }
-  12% {
+  14% {
     transform: translateX(0%);
     transform-origin: 50% 50%;
   }
@@ -87,15 +96,6 @@ const CardIconAnimation = styled(CardIcon)`
 
   & path {
     animation: ${wobble} 15s linear infinite;
-  }
-`;
-
-const StyledGroup = styled.g`
-  @media (max-width: 768px) {
-    scale: 1;
-  }
-  @media (min-width: 769px) {
-    scale: 1.67;
   }
 `;
 

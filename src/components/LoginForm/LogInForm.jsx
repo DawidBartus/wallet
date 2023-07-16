@@ -1,59 +1,15 @@
-import { Box, Button, Input, InputAdornment, Typography } from "@mui/material";
+import { Input, InputAdornment, Typography } from "@mui/material";
 import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { ReactComponent as Wallet } from "../images/wallet.svg";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import StyledFormBlurBackground from "../Background/FormBlurBackground";
-import ShoppingMan from "../ShoppingMan/ShoppingMan";
-import styled from "styled-components";
+import ShoppingMan from "../IconsFromSVG/ShoppingMan";
 import Section from "../StyledSection/StyledSection";
-// import { Link } from "react-router-dom";
-
-const StyledFormBox = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 20px;
-  height: auto;
-  width: 100%;
-  max-width: 408px;
-  gap: 20px;
-  justify-content: space-evenly;
-
-  @media (max-width: 482px) {
-    padding: 113px 20px 107px;
-  }
-  @media (min-width: 482px) {
-    background-color: #fff;
-    padding: 40px 60px 60px;
-    margin-top: 50px;
-  }
-`;
-
-const StyledBoxWithMainSVG = styled(Box)`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  max-width: 550px;
-  padding-top: 60px;
-  max-height: 600px;
-
-  @media (max-width: 482px) {
-    display: none;
-  }
-  @media (min-width: 769px) {
-    flex-direction: column;
-    gap: 30px;
-  }
-`;
-
-const LogInFormButton = styled(Button)`
-  padding: 13px 0;
-  border-radius: 20px !important;
-  width: 100%;
-  min-width: 280px;
-  max-width: 300px;
-`;
+import StyledBoxWithMainSVG from "../StyledComponents/StyledBoxWithMainSVG";
+import MainButton from "../StyledComponents/MainButton";
+import SecondaryButton from "../StyledComponents/SecondaryButton";
+import StyledFormBox from "../StyledComponents/StyledFormBox";
+import LogInFormLink from "../StyledComponents/LogInFormLink";
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -78,7 +34,11 @@ const LogInForm = () => {
             </Typography>
             <Input
               id="email"
+              name="email"
+              type="email"
               placeholder="Email"
+              autoComplete="email"
+              required
               startAdornment={
                 <InputAdornment position="start">
                   <EmailRoundedIcon color="icon" />
@@ -89,6 +49,8 @@ const LogInForm = () => {
             <Input
               id="password"
               placeholder="Password"
+              inputProps={{ min: 6, max: 12 }}
+              required
               startAdornment={
                 <InputAdornment position="start">
                   <LockRoundedIcon color="icon" />
@@ -96,12 +58,14 @@ const LogInForm = () => {
               }
               style={{ width: "100%", margin: "20px 0" }}
             />
-            <LogInFormButton variant="contained" type="submit">
+            <MainButton variant="contained" type="submit">
               Log In
-            </LogInFormButton>
-            <LogInFormButton variant="outlined" href="/wallet/register">
-              Register
-            </LogInFormButton>
+            </MainButton>
+            <LogInFormLink to="/register">
+              <SecondaryButton variant="outlined" color="info">
+                Register
+              </SecondaryButton>
+            </LogInFormLink>
           </StyledFormBox>
         </StyledFormBlurBackground>
       </Section>

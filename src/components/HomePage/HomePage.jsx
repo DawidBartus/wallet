@@ -96,7 +96,7 @@ const HomePage = () => {
         </IconHolder>
         <BalanceSection>
           <Typography style={{ color: "#A6A6A6" }}>Your Balance</Typography>
-          <Typography variant="balance">{`$ ${balance}`}</Typography>
+          <Typography variant="balance">$ {balance}</Typography>
         </BalanceSection>
         <Currency />
       </Box>

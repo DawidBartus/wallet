@@ -7,6 +7,7 @@ import ResponsiveAppBar from "./components/Navbar/Navbar";
 import Statistic from "./components/Statistic/Statistic";
 import Currency from "./components/Currency/Currency";
 import Transaction from "./components/Transaction/Transaction";
+import Balance from "./devUtils/balanceTest";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route index element={<Transaction />} />
           <Route path="/home/statistic" element={<Statistic />} />
           <Route path="/home/currency" element={<Currency />} />
+          <Route path="/home/devtest" element={<Balance />} />
         </Route>
       </Route>
     </Routes>

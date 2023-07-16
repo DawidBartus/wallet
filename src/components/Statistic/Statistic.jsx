@@ -1,12 +1,12 @@
 import StyledFormBlurBackground from "../Background/FormBlurBackground";
 import Section from "../StyledSection/StyledSection";
 
-const HomePage = () => {
+const Statistic = () => {
   return (
     <Section>
-      <StyledFormBlurBackground>Działa</StyledFormBlurBackground>
+      <StyledFormBlurBackground>Statystyka</StyledFormBlurBackground>
     </Section>
   );
 };
 
-export default HomePage;
+export default Statistic;

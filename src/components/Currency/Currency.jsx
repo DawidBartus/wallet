@@ -1,7 +1,7 @@
 import StyledFormBlurBackground from "../Background/FormBlurBackground";
 import Section from "../StyledSection/StyledSection";
 
-const HomePage = () => {
+const Currency = () => {
   return (
     <Section>
       <StyledFormBlurBackground>Działa</StyledFormBlurBackground>
@@ -9,4 +9,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Currency;

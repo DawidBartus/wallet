@@ -52,10 +52,38 @@ const IconHolder = styled(Box)`
   padding-bottom: 13px;
 `;
 const BalanceSection = styled(Box)`
+  min-width: 120px;
   max-width: 400px;
   background-color: #ffffff;
   border-radius: 30px;
   padding: 4px 0px 11px 40px;
+  @media (max-width: 768px) {
+    margin-right: 32px;
+  }
+`;
+
+const NavigationWrapper = styled(Box)`
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  margin-top: 40px;
+  padding-right: 24px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    height: auto;
+    justify-content: center;
+    max-width: none;
+    align-items: flex-start;
+  }
+`;
+
+const StyledDivWrapper = styled.div`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const HomePage = () => {
@@ -70,36 +98,29 @@ const HomePage = () => {
     <Section
       style={{ maxWidth: "1488px", padding: "0px 24px", height: "100vh" }}
     >
-      <Box
-        style={{
-          width: "100%",
-          minWidth: "200px",
-          maxWidth: "480px",
-          height: "100vh",
-          marginTop: "40px",
-          paddingRight: "24px",
-        }}
-      >
-        <IconHolder>
-          <StyledReactLink style={{ width: "auto" }} to="/home">
-            <Button variant="text">
-              <StyledHomeIcon />
-              <Typography variant={shouldBeActiveHome}>Home</Typography>
-            </Button>
-          </StyledReactLink>
-          <StyledReactLink style={{ width: "auto" }} to="/home/statistic">
-            <Button variant="text">
-              <StyledStatisticIcon />
-              <Typography variant={shouldBeActiveStat}>Statistic</Typography>
-            </Button>
-          </StyledReactLink>
-        </IconHolder>
-        <BalanceSection>
-          <Typography style={{ color: "#A6A6A6" }}>Your Balance</Typography>
-          <Typography variant="balance">$ {balance}</Typography>
-        </BalanceSection>
+      <NavigationWrapper>
+        <StyledDivWrapper>
+          <IconHolder>
+            <StyledReactLink style={{ width: "auto" }} to="/home">
+              <Button variant="text">
+                <StyledHomeIcon />
+                <Typography variant={shouldBeActiveHome}>Home</Typography>
+              </Button>
+            </StyledReactLink>
+            <StyledReactLink style={{ width: "auto" }} to="/home/statistic">
+              <Button variant="text">
+                <StyledStatisticIcon />
+                <Typography variant={shouldBeActiveStat}>Statistic</Typography>
+              </Button>
+            </StyledReactLink>
+          </IconHolder>
+          <BalanceSection>
+            <Typography style={{ color: "#A6A6A6" }}>Your Balance</Typography>
+            <Typography variant="balance">$ {balance}</Typography>
+          </BalanceSection>
+        </StyledDivWrapper>
         <Currency />
-      </Box>
+      </NavigationWrapper>
       <Box style={{ width: "100%", height: "100vh", backgroundColor: "green" }}>
         <Outlet />
       </Box>

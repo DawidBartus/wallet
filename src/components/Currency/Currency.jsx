@@ -1,6 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 import { ReactComponent as Triangles } from "../images/triangles.svg";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const rows = [
   { currency: "USD", purchase: 27.55, sale: 27.65 },
@@ -31,6 +34,11 @@ const TableStyledContainer = styled.ul`
     height: 100%;
   }
   @media (min-width: 768px) {
+    min-height: 210px;
+  }
+  @media (max-width: 480px) {
+    display: none;
+    height: 0;
     min-height: 210px;
   }
 `;
@@ -76,15 +84,38 @@ const TrianglesBackground = styled(Triangles)`
 `;
 
 const Currency = () => {
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const shouldBeVisible = location.pathname === "/home/currency";
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 480 && shouldBeVisible) {
+        navigate("/home");
+      }
+    };
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [navigate, shouldBeVisible]);
+
+  // const shouldBeVisible = location.pathname === "/home/currency";
+  console.log(shouldBeVisible);
   return (
-    <TableStyledContainer>
+    <TableStyledContainer style={{ display: shouldBeVisible ? "block" : "" }}>
       <StyledListElement>
         <StyledHeaderParagraph>Currency</StyledHeaderParagraph>
         <StyledHeaderParagraph>Purchase</StyledHeaderParagraph>
         <StyledHeaderParagraph>Sale</StyledHeaderParagraph>
       </StyledListElement>
       {rows.map((item) => (
-        <StyledListElement>
+        <StyledListElement key={item.currency}>
           <StyledBodyParagraph>{item.currency}</StyledBodyParagraph>
           <StyledBodyParagraph>{item.purchase}</StyledBodyParagraph>
           <StyledBodyParagraph>{item.sale}</StyledBodyParagraph>

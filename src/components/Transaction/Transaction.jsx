@@ -1,8 +1,10 @@
+import Section from "../StyledSection/StyledSection";
+
 const Transaction = () => {
   return (
-    <>
+    <Section>
       <p>Transakcje</p>
-    </>
+    </Section>
   );
 };
 

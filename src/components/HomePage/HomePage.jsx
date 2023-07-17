@@ -2,10 +2,13 @@ import { Box, Typography, Button } from "@mui/material";
 import Section from "../StyledSection/StyledSection";
 import { ReactComponent as Home } from "../images/home.svg";
 import { ReactComponent as Statistic } from "../images/stats.svg";
+import { ReactComponent as CurrencyIcon } from "../images/purpleDollar.svg";
 import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
 import { balance } from "../../devUtils/devVariable";
-import StyledReactLink from "../StyledComponents/StyledReactLink";
+import StyledReactLink, {
+  StyledReactLinkMobile,
+} from "../StyledComponents/StyledReactLink";
 import Currency from "../Currency/Currency";
 
 const StyledHomeIcon = styled(Home)`
@@ -44,12 +47,24 @@ const StyledStatisticIcon = styled(Statistic)`
     }
   }
 `;
+const StyledCurrencyIcon = styled(CurrencyIcon)`
+  width: 44px;
+  height: 44px;
+  & path {
+    width: 44px;
+    height: 44px;
+  }
+`;
 
 const IconHolder = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-bottom: 13px;
+  @media (max-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 const BalanceSection = styled(Box)`
   min-width: 120px;
@@ -86,8 +101,16 @@ const StyledDivWrapper = styled.div`
   }
 `;
 
+const NavigationButtonText = styled(Typography)`
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+
 const HomePage = () => {
   const location = useLocation();
+
+  const isNotCurrency = location.pathname === "/home/currency";
 
   const shouldBeActiveHome =
     location.pathname === "/home" ? "current" : "available";
@@ -104,22 +127,35 @@ const HomePage = () => {
             <StyledReactLink style={{ width: "auto" }} to="/home">
               <Button variant="text">
                 <StyledHomeIcon />
-                <Typography variant={shouldBeActiveHome}>Home</Typography>
+                <NavigationButtonText variant={shouldBeActiveHome}>
+                  Home
+                </NavigationButtonText>
               </Button>
             </StyledReactLink>
             <StyledReactLink style={{ width: "auto" }} to="/home/statistic">
               <Button variant="text">
                 <StyledStatisticIcon />
-                <Typography variant={shouldBeActiveStat}>Statistic</Typography>
+                <NavigationButtonText variant={shouldBeActiveStat}>
+                  Statistic
+                </NavigationButtonText>
               </Button>
             </StyledReactLink>
+            {/* Currency mobile button */}
+            <StyledReactLinkMobile
+              style={{ width: "auto" }}
+              to="/home/currency"
+            >
+              <Button variant="text">
+                <StyledCurrencyIcon />
+              </Button>
+            </StyledReactLinkMobile>
           </IconHolder>
           <BalanceSection>
             <Typography style={{ color: "#A6A6A6" }}>Your Balance</Typography>
             <Typography variant="balance">$ {balance}</Typography>
           </BalanceSection>
         </StyledDivWrapper>
-        <Currency />
+        {isNotCurrency ? "" : <Currency />}
       </NavigationWrapper>
       <Box style={{ width: "100%", height: "100vh", backgroundColor: "green" }}>
         <Outlet />

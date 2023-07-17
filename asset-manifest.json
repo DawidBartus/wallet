@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wallet/static/css/main.f6cc09d1.css",
-    "main.js": "/wallet/static/js/main.05a57f84.js",
+    "main.js": "/wallet/static/js/main.15e3208f.js",
     "static/js/787.e5dc3531.chunk.js": "/wallet/static/js/787.e5dc3531.chunk.js",
     "static/media/phone.svg": "/wallet/static/media/phone.b022db6a7f8c103c8287ee7d2f3a4ac0.svg",
     "static/media/shoppingMan.svg": "/wallet/static/media/shoppingMan.b702d38eee11f848679466fa5e8cd8cd.svg",
@@ -13,22 +13,23 @@
     "static/media/iconShoppingCart.svg": "/wallet/static/media/iconShoppingCart.bdfdf908e8244a9a387ef6052b5d71c3.svg",
     "static/media/wallet.svg": "/wallet/static/media/wallet.3712e11df162337c2d647916b920f35b.svg",
     "static/media/iconDollar.svg": "/wallet/static/media/iconDollar.6bd8ace7d1b2c9e564ccf06705b3c4d9.svg",
-    "static/media/stats.svg": "/wallet/static/media/stats.edd22104319f69806040c09b5d72b793.svg",
+    "static/media/stats.svg": "/wallet/static/media/stats.114fef911e16928a02403796d66f2d6d.svg",
     "static/media/triangles.svg": "/wallet/static/media/triangles.df0663b43edf669258040eb981608af1.svg",
+    "static/media/purpleDollar.svg": "/wallet/static/media/purpleDollar.1ccce566c90507562bb256a0717c2e2d.svg",
     "static/media/exit.svg": "/wallet/static/media/exit.08c9719aa3617a8d4bc17afc54a5ffe5.svg",
     "index.html": "/wallet/index.html",
-    "static/media/home.svg": "/wallet/static/media/home.f7bbf129d0e619e3cc0eccaacee2f284.svg",
+    "static/media/home.svg": "/wallet/static/media/home.40b1b969e4a1ed7ac7942668eaca6574.svg",
     "static/media/underFlowerDot.svg": "/wallet/static/media/underFlowerDot.c529ddcade04f9f729ff518ea8971aee.svg",
     "static/media/notPurpleBlob.svg": "/wallet/static/media/notPurpleBlob.5040429af0d6909b1c1d1320a86affb2.svg",
     "static/media/purpleBlob.svg": "/wallet/static/media/purpleBlob.3baa37eb30b32236724d1259a060175f.svg",
     "static/media/underManDot.svg": "/wallet/static/media/underManDot.efa5c690aef3215db7439fa1e5601798.svg",
     "static/media/underWomanDot.svg": "/wallet/static/media/underWomanDot.ddc6483e5cdccc92da21ce87186aa43b.svg",
     "main.f6cc09d1.css.map": "/wallet/static/css/main.f6cc09d1.css.map",
-    "main.05a57f84.js.map": "/wallet/static/js/main.05a57f84.js.map",
+    "main.15e3208f.js.map": "/wallet/static/js/main.15e3208f.js.map",
     "787.e5dc3531.chunk.js.map": "/wallet/static/js/787.e5dc3531.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f6cc09d1.css",
-    "static/js/main.05a57f84.js"
+    "static/js/main.15e3208f.js"
   ]
 }

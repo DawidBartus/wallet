@@ -15,8 +15,5 @@ const Section = styled.section`
     align-items: center;
   }
 `;
-// const Section = (props) => {
-//   const { children } = props;
-//   return <StyledSection>{children}</StyledSection>;
-// };
+
 export default Section;

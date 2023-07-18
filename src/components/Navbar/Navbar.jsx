@@ -10,8 +10,13 @@ import { ReactComponent as Wallet } from "../images/wallet.svg";
 import { Outlet } from "react-router-dom";
 import { ReactComponent as Exit } from "../images/exit.svg";
 import StyledFormBlurBackground from "../Background/FormBlurBackground";
+import Settings from "../Settings/Settings";
+import { Button, Modal } from "@mui/material";
 
 const ResponsiveAppBar = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <>
       <AppBar
@@ -30,9 +35,10 @@ const ResponsiveAppBar = () => {
               </Typography>
             </Box>
             <Box component="div">
-              <IconButton>
+              <Button onClick={handleOpen}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
+              </Button>
+
               <IconButton
                 style={{
                   borderLeft: "1px solid #BDBDBD",
@@ -49,6 +55,9 @@ const ResponsiveAppBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
+      <Modal open={open} onClose={handleClose} maxWidth={"xl"}>
+        <Settings />
+      </Modal>
       <StyledFormBlurBackground>
         <Outlet />
       </StyledFormBlurBackground>

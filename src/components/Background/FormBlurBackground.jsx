@@ -7,7 +7,6 @@ const FormBlurBackground = styled(Box)`
   width: 100%;
   display: flex;
   justify-content: center;
-  position: fixed;
 
   @media (min-width: 769px) {
     width: 100%;
@@ -31,11 +30,12 @@ const StyledFormBlurBackground = (props) => {
   const { children } = props;
   const blur = shouldChangeStyle ? "" : "blur(10px)";
   const align = shouldChangeStyle ? "center" : "flex-start";
+  const fixed = shouldChangeStyle ? "" : "fixed";
 
   return (
     <FormBlurBackground
       component="div"
-      style={{ backdropFilter: blur, alignItems: align }}
+      style={{ backdropFilter: blur, alignItems: align, position: fixed }}
     >
       {children}
     </FormBlurBackground>

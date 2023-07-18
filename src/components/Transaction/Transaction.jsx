@@ -1,10 +1,11 @@
-import Section from "../StyledSection/StyledSection";
+import ContainerMui from "../StyledComponents/ContainerMUI";
+// import Section from "../StyledSection/StyledSection";
 
 const Transaction = () => {
   return (
-    <Section>
+    <ContainerMui>
       <p>Transakcje</p>
-    </Section>
+    </ContainerMui>
   );
 };
 

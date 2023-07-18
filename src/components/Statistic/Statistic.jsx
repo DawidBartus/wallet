@@ -1,12 +1,7 @@
-import StyledFormBlurBackground from "../Background/FormBlurBackground";
-import Section from "../StyledSection/StyledSection";
+import ContainerMui from "../StyledComponents/ContainerMUI";
 
 const Statistic = () => {
-  return (
-    <Section>
-      <StyledFormBlurBackground>Statystyka</StyledFormBlurBackground>
-    </Section>
-  );
+  return <ContainerMui>Statystyka</ContainerMui>;
 };
 
 export default Statistic;

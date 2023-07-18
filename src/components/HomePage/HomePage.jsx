@@ -118,7 +118,13 @@ const HomePage = () => {
     location.pathname === "/home/statistic" ? "current" : "available";
 
   return (
-    <Section style={{ maxWidth: "1488px", padding: "0px 24px" }}>
+    <Section
+      style={{
+        maxWidth: "1488px",
+        padding: "0px 24px",
+        alignItems: "flex-start",
+      }}
+    >
       <NavigationWrapper>
         <StyledDivWrapper>
           <IconHolder>
@@ -155,7 +161,7 @@ const HomePage = () => {
         </StyledDivWrapper>
         {isNotCurrency ? "" : <Currency />}
       </NavigationWrapper>
-      <Box style={{ width: "100%", height: "100vh", backgroundColor: "green" }}>
+      <Box style={{ width: "100%" }}>
         <Outlet />
       </Box>
     </Section>

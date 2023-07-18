@@ -107,7 +107,6 @@ const Currency = () => {
     };
   }, [navigate, locationCurrency]);
 
-  console.log(locationCurrency);
   return (
     <TableStyledContainer style={{ display: locationCurrency ? "block" : "" }}>
       <StyledListElement>

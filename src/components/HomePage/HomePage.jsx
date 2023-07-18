@@ -118,9 +118,7 @@ const HomePage = () => {
     location.pathname === "/home/statistic" ? "current" : "available";
 
   return (
-    <Section
-      style={{ maxWidth: "1488px", padding: "0px 24px", height: "100vh" }}
-    >
+    <Section style={{ maxWidth: "1488px", padding: "0px 24px" }}>
       <NavigationWrapper>
         <StyledDivWrapper>
           <IconHolder>

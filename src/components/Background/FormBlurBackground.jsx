@@ -7,6 +7,7 @@ const FormBlurBackground = styled(Box)`
   width: 100%;
   display: flex;
   justify-content: center;
+  position: fixed;
 
   @media (min-width: 769px) {
     width: 100%;

@@ -35,6 +35,8 @@ const TableStyledContainer = styled.ul`
   }
   @media (min-width: 768px) {
     min-height: 210px;
+    height: calc(100vh - 390px);
+    max-height: 550px;
   }
   @media (max-width: 480px) {
     display: none;
@@ -88,11 +90,11 @@ const Currency = () => {
 
   const navigate = useNavigate();
 
-  const shouldBeVisible = location.pathname === "/home/currency";
+  const locationCurrency = location.pathname === "/home/currency";
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 480 && shouldBeVisible) {
+      if (window.innerWidth > 480 && locationCurrency) {
         navigate("/home");
       }
     };
@@ -103,12 +105,11 @@ const Currency = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [navigate, shouldBeVisible]);
+  }, [navigate, locationCurrency]);
 
-  // const shouldBeVisible = location.pathname === "/home/currency";
-  console.log(shouldBeVisible);
+  console.log(locationCurrency);
   return (
-    <TableStyledContainer style={{ display: shouldBeVisible ? "block" : "" }}>
+    <TableStyledContainer style={{ display: locationCurrency ? "block" : "" }}>
       <StyledListElement>
         <StyledHeaderParagraph>Currency</StyledHeaderParagraph>
         <StyledHeaderParagraph>Purchase</StyledHeaderParagraph>

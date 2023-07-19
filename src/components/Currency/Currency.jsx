@@ -5,10 +5,10 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-const rows = [
-  { currency: "USD", purchase: 27.55, sale: 27.65 },
-  { currency: "EUR", purchase: 27.55, sale: 27.65 },
-];
+// const rows = [
+//   { currency: "USD", purchase: 27.55, sale: 27.65 },
+//   { currency: "EUR", purchase: 27.55, sale: 27.65 },
+// ];
 
 const TableStyledContainer = styled.ul`
   list-style: none;
@@ -85,13 +85,42 @@ const TrianglesBackground = styled(Triangles)`
   }
 `;
 
+const getCurrencyData = () => {
+  const hour = 60 * 60 * 1000;
+  const time = Date.now();
+  const oldCurrencyData = JSON.parse(localStorage.getItem("currency"));
+
+  // Checks if data is saved in localStorage
+  if (oldCurrencyData) {
+    const oldTime = oldCurrencyData.find((item) => item.timestamp).timestamp;
+    const isMoreThenHourAge = time - oldTime > hour;
+    // Checks if data is saved in localStorage less than an hour ago.
+    if (isMoreThenHourAge) {
+      const dataWithoutTimestamp = oldCurrencyData(
+        ({ timestamp, ...rest }) => rest
+      );
+      return dataWithoutTimestamp;
+    }
+  }
+
+  // // Fetch data from backend
+  const currencyData = [
+    { currency: "USD", purchase: 27.55, sale: 27.65 },
+    { currency: "EUR", purchase: 27.55, sale: 27.65 },
+  ];
+  // Add a timestamp and save the data in localStorage.
+  const forLocalstorage = [{ timestamp: time }, ...currencyData];
+  localStorage.setItem("currency", JSON.stringify(forLocalstorage));
+
+  return currencyData;
+};
+
 const Currency = () => {
   const location = useLocation();
-
   const navigate = useNavigate();
-
   const locationCurrency = location.pathname === "/home/currency";
 
+  // Currency widow close when on /currency path and window size is greater then mobile
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 480 && locationCurrency) {
@@ -106,6 +135,8 @@ const Currency = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [navigate, locationCurrency]);
+
+  const rows = getCurrencyData();
 
   return (
     <TableStyledContainer style={{ display: locationCurrency ? "block" : "" }}>

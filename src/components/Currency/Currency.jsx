@@ -5,11 +5,6 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-// const rows = [
-//   { currency: "USD", purchase: 27.55, sale: 27.65 },
-//   { currency: "EUR", purchase: 27.55, sale: 27.65 },
-// ];
-
 const TableStyledContainer = styled.ul`
   list-style: none;
   padding: 0px;
@@ -109,8 +104,8 @@ const getCurrencyData = () => {
     { currency: "EUR", purchase: 27.55, sale: 27.65 },
   ];
   // Add a timestamp and save the data in localStorage.
-  const forLocalstorage = [{ timestamp: time }, ...currencyData];
-  localStorage.setItem("currency", JSON.stringify(forLocalstorage));
+  const forLocalStorage = [{ timestamp: time }, ...currencyData];
+  localStorage.setItem("currency", JSON.stringify(forLocalStorage));
 
   return currencyData;
 };

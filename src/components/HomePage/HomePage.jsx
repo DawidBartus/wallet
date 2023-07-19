@@ -1,81 +1,10 @@
-import { Box, Typography, Button } from "@mui/material";
-import Section from "../StyledSection/StyledSection";
-import { ReactComponent as Home } from "../images/home.svg";
-import { ReactComponent as Statistic } from "../images/stats.svg";
-import { ReactComponent as CurrencyIcon } from "../images/purpleDollar.svg";
-import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
-import { balance } from "../../devUtils/devVariable";
-import StyledReactLink, {
-  StyledReactLinkMobile,
-} from "../StyledComponents/StyledReactLink";
+import { Box } from "@mui/material";
+import styled from "styled-components";
+import Section from "../StyledSection/StyledSection";
 import Currency from "../Currency/Currency";
-
-const StyledHomeIcon = styled(Home)`
-  width: 44px;
-  height: 44px;
-  & path {
-    width: 44px;
-    height: 44px;
-  }
-
-  @media (min-width: 480px) {
-    padding-right: 20px;
-    width: 24px;
-    height: 24px;
-    & path {
-      width: 24px;
-      height: 24px;
-    }
-  }
-`;
-const StyledStatisticIcon = styled(Statistic)`
-  width: 44px;
-  height: 44px;
-  & path {
-    width: 44px;
-    height: 44px;
-  }
-
-  @media (min-width: 480px) {
-    padding-right: 20px;
-    width: 24px;
-    height: 24px;
-    & path {
-      width: 24px;
-      height: 24px;
-    }
-  }
-`;
-const StyledCurrencyIcon = styled(CurrencyIcon)`
-  width: 44px;
-  height: 44px;
-  & path {
-    width: 44px;
-    height: 44px;
-  }
-`;
-
-const IconHolder = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-bottom: 13px;
-  @media (max-width: 768px) {
-    flex-direction: row;
-    justify-content: center;
-  }
-`;
-const BalanceSection = styled(Box)`
-  min-width: 120px;
-  max-width: 400px;
-  background-color: #ffffff;
-  border-radius: 30px;
-  padding: 4px 0px 11px 40px;
-  @media (max-width: 768px) {
-    margin-right: 32px;
-  }
-`;
+import Balance from "../BalanceSection/BalanceSection";
+import SecondaryNavigation from "../SecondaryNavigation/SecondaryNavigation";
 
 const NavigationWrapper = styled(Box)`
   width: 100%;
@@ -101,21 +30,9 @@ const StyledDivWrapper = styled.div`
   }
 `;
 
-const NavigationButtonText = styled(Typography)`
-  @media (max-width: 480px) {
-    display: none;
-  }
-`;
-
 const HomePage = () => {
   const location = useLocation();
-
-  const isNotCurrency = location.pathname === "/home/currency";
-
-  const shouldBeActiveHome =
-    location.pathname === "/home" ? "current" : "available";
-  const shouldBeActiveStat =
-    location.pathname === "/home/statistic" ? "current" : "available";
+  const isCurrency = location.pathname === "/home/currency";
 
   return (
     <Section
@@ -127,39 +44,10 @@ const HomePage = () => {
     >
       <NavigationWrapper>
         <StyledDivWrapper>
-          <IconHolder>
-            <StyledReactLink style={{ width: "auto" }} to="/home">
-              <Button variant="text">
-                <StyledHomeIcon />
-                <NavigationButtonText variant={shouldBeActiveHome}>
-                  Home
-                </NavigationButtonText>
-              </Button>
-            </StyledReactLink>
-            <StyledReactLink style={{ width: "auto" }} to="/home/statistic">
-              <Button variant="text">
-                <StyledStatisticIcon />
-                <NavigationButtonText variant={shouldBeActiveStat}>
-                  Statistic
-                </NavigationButtonText>
-              </Button>
-            </StyledReactLink>
-            {/* Currency mobile button */}
-            <StyledReactLinkMobile
-              style={{ width: "auto" }}
-              to="/home/currency"
-            >
-              <Button variant="text">
-                <StyledCurrencyIcon />
-              </Button>
-            </StyledReactLinkMobile>
-          </IconHolder>
-          <BalanceSection>
-            <Typography style={{ color: "#A6A6A6" }}>Your Balance</Typography>
-            <Typography variant="balance">$ {balance}</Typography>
-          </BalanceSection>
+          <SecondaryNavigation />
+          <Balance />
         </StyledDivWrapper>
-        {isNotCurrency ? "" : <Currency />}
+        {isCurrency ? "" : <Currency />}
       </NavigationWrapper>
       <Box style={{ width: "100%" }}>
         <Outlet />

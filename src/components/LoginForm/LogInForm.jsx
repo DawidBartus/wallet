@@ -1,15 +1,21 @@
 import { Input, InputAdornment, Typography } from "@mui/material";
-import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
-import { ReactComponent as Wallet } from "../images/wallet.svg";
-import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import StyledFormBlurBackground from "../Background/FormBlurBackground";
+// MUI icons
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import LockRoundedIcon from "@mui/icons-material/LockRounded";
+import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
+// SVG icons
+import { ReactComponent as Wallet } from "../images/wallet.svg";
 import ShoppingMan from "../IconsFromSVG/ShoppingMan";
+// Customize components
 import Section from "../StyledSection/StyledSection";
 import StyledBoxWithMainSVG from "../StyledComponents/StyledBoxWithMainSVG";
 import MainButton from "../StyledComponents/MainButton";
 import SecondaryButton from "../StyledComponents/SecondaryButton";
 import StyledFormBox from "../StyledComponents/StyledFormBox";
 import StyledReactLink from "../StyledComponents/StyledReactLink";
+import { useState } from "react";
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -17,6 +23,12 @@ const handleSubmit = (e) => {
 };
 
 const LogInForm = () => {
+  const [visible, setVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setVisible((prevState) => !prevState);
+  };
+
   return (
     <>
       <Section>
@@ -49,11 +61,25 @@ const LogInForm = () => {
             <Input
               id="password"
               placeholder="Password"
+              name="password"
+              type={visible ? "text" : "password"}
               inputProps={{ min: 6, max: 12 }}
               required
               startAdornment={
                 <InputAdornment position="start">
                   <LockRoundedIcon color="icon" />
+                </InputAdornment>
+              }
+              endAdornment={
+                <InputAdornment
+                  position="end"
+                  onClick={togglePasswordVisibility}
+                >
+                  {visible ? (
+                    <VisibilityOffIcon color="icon" />
+                  ) : (
+                    <VisibilityIcon color="icon" />
+                  )}
                 </InputAdornment>
               }
               style={{ width: "100%", margin: "20px 0" }}

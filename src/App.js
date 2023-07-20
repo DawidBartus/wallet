@@ -6,7 +6,7 @@ import HomePage from "./components/HomePage/HomePage";
 import ResponsiveAppBar from "./components/ResponsiveAppBar/Navbar";
 import Statistic from "./components/Statistic/Statistic";
 import Currency from "./components/Currency/Currency";
-import Transaction from "./components/Transaction/Transaction";
+// import Transaction from "./components/Transaction/Transaction";
 // import Balance from "./devUtils/balanceTest";
 import Settings from "./components/Settings/Settings";
 import DevTable from "./devUtils/devtable";
@@ -19,7 +19,7 @@ function App() {
       <Route path="/register" element={<RegisterForm />} />
       <Route element={<ResponsiveAppBar />}>
         <Route path="/home" element={<HomePage />}>
-          <Route index element={<Transaction />} />
+          <Route index element={<DevTable />} />
           <Route path="/home/statistic" element={<Statistic />} />
           <Route path="/home/currency" element={<Currency />} />
           <Route path="/home/settings" element={<Settings />} />

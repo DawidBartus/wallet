@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import ContainerMui from "../components/StyledComponents/ContainerMUI";
 import dataObjects from "../components/Transaction/devObject";
 import VerticalHeaderTable from "./verticalTable";
@@ -16,8 +17,8 @@ const Horizontal = () => {
           </tr>
         </thead>
         <tbody>
-          {dataObjects.map(({ date, type, category, comment, sum }) => (
-            <tr>
+          {dataObjects.map(({ date, type, category, comment, sum }, index) => (
+            <tr key={index}>
               <td>{date}</td>
               <td>{type ? "+" : "-"}</td>
               <td>{category}</td>
@@ -38,12 +39,22 @@ const Horizontal = () => {
 };
 
 const DevTable = () => {
-  return (
-    <>
-      <Horizontal />
-      <VerticalHeaderTable />
-    </>
-  );
+  const [mobile, setMobile] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth > 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [window.innerWidth]);
+  console.log(mobile);
+  console.log(window.innerWidth);
+  return <>{mobile ? <Horizontal /> : <VerticalHeaderTable />}</>;
 };
 
 export default DevTable;

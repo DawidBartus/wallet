@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,9 +11,10 @@ import { ReactComponent as Exit } from "../images/exit.svg";
 import StyledFormBlurBackground from "../Background/FormBlurBackground";
 import Settings from "../Settings/Settings";
 import { Button, Modal } from "@mui/material";
+import { useState } from "react";
 
 const ResponsiveAppBar = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
@@ -55,7 +55,7 @@ const ResponsiveAppBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <Modal open={open} onClose={handleClose} maxWidth={"xl"}>
+      <Modal open={open} onClose={handleClose}>
         <Settings />
       </Modal>
       <StyledFormBlurBackground>

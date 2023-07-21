@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import dataObjects from "../components/Transaction/devObject";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import { Button } from "@mui/material";
 
 const TableContainer = styled.div`
   display: flex;
@@ -17,16 +19,57 @@ const Table = styled.table`
 `;
 
 const Th = styled.th`
+  position: relative;
+  border-bottom: 1px solid #dcdcdf;
   text-align: left;
-  background-color: #f2f2f2;
-  border: 1px solid #ddd;
   padding: 8px;
   width: 100px;
+  color: #000;
+  font-family: Circe;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background-color: #ff6596;
+  }
 `;
 
 const Td = styled.td`
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #dcdcdf;
   padding: 8px;
+  text-align: end;
+  padding-right: 20px;
+  color: #000;
+  text-align: right;
+  font-family: Circe;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+const TableButton = styled(Button)`
+  color: #fff !important;
+  text-align: center;
+  font-family: Circe;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 18px !important;
+`;
+const TableRow = styled.tr`
+  background-color: #fff;
+  border-radius: 10px !important;
+  &:first-child th {
+    border-top-left-radius: 10px;
+  }
 `;
 
 const VerticalHeaderTable = () => {
@@ -36,33 +79,36 @@ const VerticalHeaderTable = () => {
         <tbody>
           {dataObjects.map(({ date, type, category, comment, sum }) => (
             <>
-              <tr>
+              <TableRow>
                 <Th>Date:</Th>
                 <Td>{date}</Td>
-              </tr>
-              <tr>
+              </TableRow>
+              <TableRow>
                 <Th>Type:</Th>
                 <Td>{type ? "+" : "-"}</Td>
-              </tr>
-              <tr>
+              </TableRow>
+              <TableRow>
                 <Th>Category:</Th>
                 <Td>{category}</Td>
-              </tr>
-              <tr>
+              </TableRow>
+              <TableRow>
                 <Th>Comment:</Th>
                 <Td>{comment}</Td>
-              </tr>
-              <tr style={{ marginBottom: "20px" }}>
+              </TableRow>
+              <TableRow style={{ marginBottom: "20px" }}>
                 <Th>Sum:</Th>
                 <Td>{sum}</Td>
-              </tr>
-              <td>
-                <button>Remove</button>
-              </td>
-              <td>
-                <button>edit</button>
-              </td>
-              <div style={{ height: "20px" }}></div>
+              </TableRow>
+              <TableRow style={{ marginBottom: "20px" }}>
+                <Th style={{ border: "0" }}>
+                  <TableButton variant="contained">Delete</TableButton>
+                </Th>
+                <Td style={{ border: "0" }}>
+                  <EditOutlinedIcon /> Edit
+                </Td>
+              </TableRow>
+
+              <tr style={{ height: "20px" }}></tr>
             </>
           ))}
         </tbody>

@@ -25,7 +25,6 @@ const Th = styled.th`
   position: relative;
   border-bottom: 1px solid #dcdcdf;
   text-align: left;
-  padding: 8px;
   width: 100px;
   color: #000;
   font-family: Circe;
@@ -34,6 +33,7 @@ const Th = styled.th`
   font-weight: 700;
   line-height: normal;
   overflow: hidden;
+  padding: 12px 0px 8px 8px;
   &::before {
     content: "";
     position: absolute;
@@ -82,7 +82,7 @@ const TableRow = styled.tr`
 `;
 
 const VerticalTable = (props) => {
-  const dataObject = useSelector((state) => state.transaction);
+  const dataObject = useSelector((state) => state.transaction.transactions);
   const { edit, remove } = props;
   return (
     <TableContainer>

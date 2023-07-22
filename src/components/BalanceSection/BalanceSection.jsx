@@ -1,6 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import styled from "styled-components";
-import { balance } from "../../devUtils/devVariable";
+import { useDispatch, useSelector } from "react-redux";
+import { getBalance } from "../../Redux/transactionsSlice";
+import { useEffect } from "react";
 
 const BalanceSection = styled(Box)`
   min-width: 120px;
@@ -14,6 +16,15 @@ const BalanceSection = styled(Box)`
 `;
 
 const Balance = () => {
+  const dispatch = useDispatch();
+  const transactions = useSelector((state) => state.transaction.transactions);
+
+  useEffect(() => {
+    dispatch(getBalance());
+  }, [transactions, dispatch]);
+
+  const balance = useSelector((state) => state.transaction.saldo);
+
   return (
     <BalanceSection>
       <Typography style={{ color: "#A6A6A6" }}>Your Balance</Typography>

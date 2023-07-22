@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import dataObjects from "../components/Transaction/devObject";
-// import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import dataObjects from "./devObject";
 import { Button } from "@mui/material";
-import { ReactComponent as EditIcon } from "../components/images/edit.svg";
+import { ReactComponent as EditIcon } from "../images/edit.svg";
 import React from "react";
 
 const TableContainer = styled.div`
@@ -80,11 +79,9 @@ const TableRow = styled.tr`
   }
 `;
 
-const VerticalHeaderTable = () => {
-  const deleteElement = () => {
-    console.log("deleted");
-  };
-
+const VerticalTable = (props) => {
+  const { edit, remove } = props;
+  console.log("działą");
   return (
     <TableContainer>
       <Table>
@@ -115,11 +112,11 @@ const VerticalHeaderTable = () => {
                 </TableRow>
                 <TableRow style={{ marginBottom: "20px" }} className="lastOfTh">
                   <Th style={{ border: "0" }} type={typeToString}>
-                    <TableButton variant="contained" onClick={deleteElement}>
+                    <TableButton variant="contained" onClick={remove}>
                       Delete
                     </TableButton>
                   </Th>
-                  <Td style={{ border: "0" }}>
+                  <Td style={{ border: "0" }} onClick={edit}>
                     <EditIcon /> Edit
                   </Td>
                 </TableRow>
@@ -134,4 +131,4 @@ const VerticalHeaderTable = () => {
   );
 };
 
-export default VerticalHeaderTable;
+export default VerticalTable;

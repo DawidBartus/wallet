@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import dataObjects from "./devObject";
 import { Button } from "@mui/material";
 import { ReactComponent as EditIcon } from "../images/edit.svg";
 import React from "react";
+import { useSelector } from "react-redux";
+import AddTransaction from "../StyledComponents/AddTransaction";
 
 const TableContainer = styled.div`
   display: flex;
+  justify-content: center;
   max-height: 750px;
   overflow-x: auto;
   margin-top: 40px;
@@ -80,53 +82,62 @@ const TableRow = styled.tr`
 `;
 
 const VerticalTable = (props) => {
+  const dataObject = useSelector((state) => state.transaction);
   const { edit, remove } = props;
-  console.log("działą");
   return (
     <TableContainer>
-      <Table>
-        <tbody>
-          {dataObjects.map(({ date, type, category, comment, sum }, index) => {
-            const typeToString = type.toString();
-            return (
-              <React.Fragment key={index}>
-                <TableRow className="firstOfTh">
-                  <Th type={typeToString}>Date:</Th>
-                  <Td>{date}</Td>
-                </TableRow>
-                <TableRow type={type.toString()}>
-                  <Th type={typeToString}>Type:</Th>
-                  <Td>{type ? "+" : "-"}</Td>
-                </TableRow>
-                <TableRow>
-                  <Th type={typeToString}>Category:</Th>
-                  <Td>{category}</Td>
-                </TableRow>
-                <TableRow>
-                  <Th type={typeToString}>Comment:</Th>
-                  <Td>{comment}</Td>
-                </TableRow>
-                <TableRow style={{ marginBottom: "20px" }}>
-                  <Th type={typeToString}>Sum:</Th>
-                  <Td>{sum}</Td>
-                </TableRow>
-                <TableRow style={{ marginBottom: "20px" }} className="lastOfTh">
-                  <Th style={{ border: "0" }} type={typeToString}>
-                    <TableButton variant="contained" onClick={remove}>
-                      Delete
-                    </TableButton>
-                  </Th>
-                  <Td style={{ border: "0" }} onClick={edit}>
-                    <EditIcon /> Edit
-                  </Td>
-                </TableRow>
+      {dataObject.length ? (
+        <Table>
+          <tbody>
+            {dataObject.map(({ date, type, category, comment, sum, id }) => {
+              const typeToString = type.toString();
 
-                <tr style={{ height: "20px" }}></tr>
-              </React.Fragment>
-            );
-          })}
-        </tbody>
-      </Table>
+              return (
+                <React.Fragment key={id}>
+                  <TableRow className="firstOfTh">
+                    <Th type={typeToString}>Date:</Th>
+                    <Td>{date}</Td>
+                  </TableRow>
+                  <TableRow type={type.toString()}>
+                    <Th type={typeToString}>Type:</Th>
+                    <Td>{type ? "+" : "-"}</Td>
+                  </TableRow>
+                  <TableRow>
+                    <Th type={typeToString}>Category:</Th>
+                    <Td>{category}</Td>
+                  </TableRow>
+                  <TableRow>
+                    <Th type={typeToString}>Comment:</Th>
+                    <Td>{comment}</Td>
+                  </TableRow>
+                  <TableRow style={{ marginBottom: "20px" }}>
+                    <Th type={typeToString}>Sum:</Th>
+                    <Td>{sum}</Td>
+                  </TableRow>
+                  <TableRow
+                    style={{ marginBottom: "20px" }}
+                    className="lastOfTh BodyTableRow"
+                    id={id}
+                  >
+                    <Th style={{ border: "0" }} type={typeToString}>
+                      <TableButton variant="contained" onClick={remove}>
+                        Delete
+                      </TableButton>
+                    </Th>
+                    <Td style={{ border: "0" }} onClick={edit}>
+                      <EditIcon /> Edit
+                    </Td>
+                  </TableRow>
+
+                  <tr style={{ height: "20px" }}></tr>
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </Table>
+      ) : (
+        <AddTransaction>Add your first transaction.</AddTransaction>
+      )}
     </TableContainer>
   );
 };

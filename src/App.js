@@ -9,23 +9,27 @@ import Currency from "./components/Currency/Currency";
 import Settings from "./components/Settings/Settings";
 import Transaction from "./components/Transaction/Transaction";
 import VerticalTable from "./components/Transaction/VerticalTable";
+import { Provider } from "react-redux";
+import store from "./Redux/store";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LogInForm />} />
-      <Route path="/login" element={<LogInForm />} />
-      <Route path="/register" element={<RegisterForm />} />
-      <Route element={<ResponsiveAppBar />}>
-        <Route path="/home" element={<HomePage />}>
-          <Route index element={<Transaction />} />
-          <Route path="/home/statistic" element={<Statistic />} />
-          <Route path="/home/currency" element={<Currency />} />
-          <Route path="/home/settings" element={<Settings />} />
-          <Route path="/home/devtest" element={<VerticalTable />} />
+    <Provider store={store}>
+      <Routes>
+        <Route path="/" element={<LogInForm />} />
+        <Route path="/login" element={<LogInForm />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route element={<ResponsiveAppBar />}>
+          <Route path="/home" element={<HomePage />}>
+            <Route index element={<Transaction />} />
+            <Route path="/home/statistic" element={<Statistic />} />
+            <Route path="/home/currency" element={<Currency />} />
+            <Route path="/home/settings" element={<Settings />} />
+            <Route path="/home/devtest" element={<VerticalTable />} />
+          </Route>
         </Route>
-      </Route>
-    </Routes>
+      </Routes>
+    </Provider>
   );
 }
 

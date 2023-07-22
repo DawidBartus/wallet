@@ -1,14 +1,17 @@
 import ContainerMui from "../StyledComponents/ContainerMUI";
-import dataObjects from "./devObject";
+// import dataObjects from "./devObject";
 import styled from "styled-components";
 import { ReactComponent as EditIcon } from "../images/edit.svg";
 import { Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import AddTransaction from "../StyledComponents/AddTransaction";
 
 const TableHead = styled.thead`
   width: 100%;
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 999;
 `;
 const Table = styled.table`
   border-spacing: 0;
@@ -62,45 +65,54 @@ const TableButton = styled(Button)`
 `;
 
 const HorizontalTable = (props) => {
+  const dataObject = useSelector((state) => state.transaction);
   const { edit, remove } = props;
+
   return (
     <ContainerMui style={{ maxHeight: "750px", overflowX: "auto" }}>
-      <Table style={{ width: "100%" }}>
-        <TableHead>
-          <HeaderTableRow style={{ textAlign: "left" }}>
-            <TableHeading>Date</TableHeading>
-            <TableHeading>Type</TableHeading>
-            <TableHeading>Category</TableHeading>
-            <TableHeading>Comment</TableHeading>
-            <TableHeading>Sum</TableHeading>
-            <TableHeading></TableHeading>
-            <TableHeading></TableHeading>
-          </HeaderTableRow>
-        </TableHead>
-        <tbody>
-          {dataObjects.map(({ id, date, type, category, comment, sum }) => (
-            <BodyTableRow key={id} id={id} className="BodyTableRow">
-              <TableData>{date}</TableData>
-              <TableData>{type ? "+" : "-"}</TableData>
-              <TableData>{category}</TableData>
-              <TableData>{comment}</TableData>
-              <TableData
-                style={{ color: type ? "#24CCA7" : "#FF6596", fontWeight: 700 }}
-              >
-                {sum}
-              </TableData>
-              <TableData>
-                <EditIcon onClick={edit} />
-              </TableData>
-              <TableData>
-                <TableButton variant="contained" onClick={remove}>
-                  Remove
-                </TableButton>
-              </TableData>
-            </BodyTableRow>
-          ))}
-        </tbody>
-      </Table>
+      {dataObject.length ? (
+        <Table style={{ width: "100%" }}>
+          <TableHead>
+            <HeaderTableRow style={{ textAlign: "left" }}>
+              <TableHeading>Date</TableHeading>
+              <TableHeading>Type</TableHeading>
+              <TableHeading>Category</TableHeading>
+              <TableHeading>Comment</TableHeading>
+              <TableHeading>Sum</TableHeading>
+              <TableHeading></TableHeading>
+              <TableHeading></TableHeading>
+            </HeaderTableRow>
+          </TableHead>
+          <tbody>
+            {dataObject.map(({ id, date, type, category, comment, sum }) => (
+              <BodyTableRow key={id} id={id} className="BodyTableRow">
+                <TableData>{date}</TableData>
+                <TableData>{type ? "+" : "-"}</TableData>
+                <TableData>{category}</TableData>
+                <TableData>{comment}</TableData>
+                <TableData
+                  style={{
+                    color: type ? "#24CCA7" : "#FF6596",
+                    fontWeight: 700,
+                  }}
+                >
+                  {sum}
+                </TableData>
+                <TableData>
+                  <EditIcon onClick={edit} />
+                </TableData>
+                <TableData>
+                  <TableButton variant="contained" onClick={remove}>
+                    Remove
+                  </TableButton>
+                </TableData>
+              </BodyTableRow>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+        <AddTransaction>Add your first transaction.</AddTransaction>
+      )}
     </ContainerMui>
   );
 };

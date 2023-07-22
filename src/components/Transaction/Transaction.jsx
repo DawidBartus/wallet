@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-import dataObjects from "./devObject";
 import VerticalTable from "./VerticalTable";
 import HorizontalTable from "./HorizontalTable";
+import { useDispatch } from "react-redux";
+import { removeTransaction } from "../../Redux/transactionsSlice";
 
 const Transaction = () => {
   const [isMobile, setMobile] = useState(window.innerWidth >= 600);
-  console.log(isMobile);
-  const handleEdit = (e) => {
-    let id = e.target.closest(".BodyTableRow")?.id;
-    let newId = parseInt(id);
-    let transactionToEdit = dataObjects.find((item) => item.id === newId);
-    console.log(transactionToEdit);
-    // dalsza logika po dodaniu stanu
-  };
+  const dispatch = useDispatch();
+
   const handleRemove = (e) => {
     let id = e.target.closest(".BodyTableRow")?.id;
-    const newId = parseInt(id);
-    const newDataObject = dataObjects.filter((item) => item.id !== newId);
-    console.log(newDataObject);
     console.log(id);
-    // dalsza logika po dodaniu stanu
+    const newId = parseInt(id);
+    dispatch(removeTransaction(newId));
+    // dalsza logika do przesłania do backendu
+  };
+  const handleEdit = (e) => {
+    // let id = e.target.closest(".BodyTableRow")?.id;
+    // let newId = parseInt(id);
+    // let transactionToEdit = dataObjects.find((item) => item.id === newId);
+    // logika do zmiany stanu po wprowadzeniu zmian
   };
 
   useEffect(() => {

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import dataObjects from "../components/Transaction/devObject";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+// import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Button } from "@mui/material";
+import { ReactComponent as EditIcon } from "../components/images/edit.svg";
+import React from "react";
 
 const TableContainer = styled.div`
   display: flex;
@@ -30,6 +32,7 @@ const Th = styled.th`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  overflow: hidden;
   &::before {
     content: "";
     position: absolute;
@@ -37,7 +40,8 @@ const Th = styled.th`
     bottom: 0;
     left: 0;
     width: 4px;
-    background-color: #ff6596;
+    background-color: ${({ type }) =>
+      type === "true" ? "#24CCA7" : "#FF6596"};
   }
 `;
 
@@ -67,50 +71,63 @@ const TableButton = styled(Button)`
 const TableRow = styled.tr`
   background-color: #fff;
   border-radius: 10px !important;
-  &:first-child th {
+  overflow: hidden;
+  &.firstOfTh th {
     border-top-left-radius: 10px;
+  }
+  &.lastOfTh th {
+    border-bottom-left-radius: 10px;
   }
 `;
 
 const VerticalHeaderTable = () => {
+  const deleteElement = () => {
+    console.log("deleted");
+  };
+
   return (
     <TableContainer>
       <Table>
         <tbody>
-          {dataObjects.map(({ date, type, category, comment, sum }) => (
-            <>
-              <TableRow>
-                <Th>Date:</Th>
-                <Td>{date}</Td>
-              </TableRow>
-              <TableRow>
-                <Th>Type:</Th>
-                <Td>{type ? "+" : "-"}</Td>
-              </TableRow>
-              <TableRow>
-                <Th>Category:</Th>
-                <Td>{category}</Td>
-              </TableRow>
-              <TableRow>
-                <Th>Comment:</Th>
-                <Td>{comment}</Td>
-              </TableRow>
-              <TableRow style={{ marginBottom: "20px" }}>
-                <Th>Sum:</Th>
-                <Td>{sum}</Td>
-              </TableRow>
-              <TableRow style={{ marginBottom: "20px" }}>
-                <Th style={{ border: "0" }}>
-                  <TableButton variant="contained">Delete</TableButton>
-                </Th>
-                <Td style={{ border: "0" }}>
-                  <EditOutlinedIcon /> Edit
-                </Td>
-              </TableRow>
+          {dataObjects.map(({ date, type, category, comment, sum }, index) => {
+            const typeToString = type.toString();
+            return (
+              <React.Fragment key={index}>
+                <TableRow className="firstOfTh">
+                  <Th type={typeToString}>Date:</Th>
+                  <Td>{date}</Td>
+                </TableRow>
+                <TableRow type={type.toString()}>
+                  <Th type={typeToString}>Type:</Th>
+                  <Td>{type ? "+" : "-"}</Td>
+                </TableRow>
+                <TableRow>
+                  <Th type={typeToString}>Category:</Th>
+                  <Td>{category}</Td>
+                </TableRow>
+                <TableRow>
+                  <Th type={typeToString}>Comment:</Th>
+                  <Td>{comment}</Td>
+                </TableRow>
+                <TableRow style={{ marginBottom: "20px" }}>
+                  <Th type={typeToString}>Sum:</Th>
+                  <Td>{sum}</Td>
+                </TableRow>
+                <TableRow style={{ marginBottom: "20px" }} className="lastOfTh">
+                  <Th style={{ border: "0" }} type={typeToString}>
+                    <TableButton variant="contained" onClick={deleteElement}>
+                      Delete
+                    </TableButton>
+                  </Th>
+                  <Td style={{ border: "0" }}>
+                    <EditIcon /> Edit
+                  </Td>
+                </TableRow>
 
-              <tr style={{ height: "20px" }}></tr>
-            </>
-          ))}
+                <tr style={{ height: "20px" }}></tr>
+              </React.Fragment>
+            );
+          })}
         </tbody>
       </Table>
     </TableContainer>

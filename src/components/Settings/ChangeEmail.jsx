@@ -58,7 +58,7 @@ const ChangeEmail = () => {
       </MainButton>
       {sent ? (
         <Typography textAlign={"center"}>
-          Verification mail was sent. R
+          Verification mail was sent.
         </Typography>
       ) : (
         ""

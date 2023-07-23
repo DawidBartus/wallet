@@ -4,6 +4,7 @@ import { ReactComponent as EditIcon } from "../images/edit.svg";
 import React from "react";
 import { useSelector } from "react-redux";
 import AddTransaction from "../StyledComponents/AddTransaction";
+import AddTransactionButton from "../AddTransaction/AddTransaction";
 
 const TableContainer = styled.div`
   display: flex;
@@ -136,7 +137,10 @@ const VerticalTable = (props) => {
           </tbody>
         </Table>
       ) : (
-        <AddTransaction>Add your first transaction.</AddTransaction>
+        <AddTransaction>
+          Add your first transaction.
+          <AddTransactionButton />
+        </AddTransaction>
       )}
     </TableContainer>
   );

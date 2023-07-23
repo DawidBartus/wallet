@@ -1,70 +1,70 @@
-import { Switch, TextField, Typography } from "@mui/material";
-import ContainerMui from "../StyledComponents/ContainerMUI";
-import { styled } from "@mui/material/styles";
-import StyledFormBox from "../StyledComponents/StyledFormBox";
+import { TextField, Typography, Box } from "@mui/material";
 import { useState } from "react";
 import { Stack } from "@mui/system";
 import StyledTypography from "../StyledComponents/StyledTypography";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import MaterialUISwitch from "../StyledComponents/MaterialUISwitch";
+import styled from "styled-components";
+import { DatePicker } from "@mui/x-date-pickers";
+import MainButton from "../StyledComponents/MainButton";
+import SecondaryButton from "../StyledComponents/SecondaryButton";
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-  width: 80,
-  height: 50,
-  padding: 8,
-  overflow: "visible",
-  "& .MuiSwitch-switchBase": {
-    margin: 1,
-    padding: 0,
-    transform: "translateX(2px) translateY(2px)",
-    "&.Mui-checked": {
-      color: "#fff",
-      transform: "translateX(30px) translateY(2px)",
-      "& .MuiSwitch-thumb:before": {
-        content: "'-'",
-        backgroundColor: "#FF6596",
-        borderRadius: "50%",
-        boxShadow: "0px 6px 15px 0px rgba(255, 101, 150, 0.50)",
-      },
-      "& + .MuiSwitch-track": {
-        opacity: 1,
-        backgroundColor: "transparent",
-        border: "1px solid #E0E0E0",
-      },
-    },
-  },
-  "& .MuiSwitch-thumb": {
-    width: 44,
-    height: 44,
-    "&:before": {
-      backgroundColor: "#24CCA7",
-      borderRadius: "50%",
-      content: "'+'",
-      boxShadow: "0px 6px 15px 0px rgba(36, 204, 167, 0.50)",
-      alignContent: "center",
-      position: "absolute",
-      width: "100%",
-      height: "100%",
-      left: 0,
-      top: 0,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-  },
-  "& .MuiSwitch-track": {
-    opacity: 1,
-    backgroundColor: "transparent",
-    border: "1px solid #E0E0E0",
-    borderRadius: 20 / 2,
-  },
-}));
+const FlexWrapperBox = styled(Box)`
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 40px;
+  text-align: center;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  @media (min-width: 601px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+`;
+
+const AddTransactionWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 30px;
+  margin-top: 60px;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  @media (min-width: 600px) {
+    width: 100%;
+    max-width: 600px;
+  }
+  @media (max-width: 600px) {
+    height: 100vh;
+    width: 100%;
+    margin-top: 0;
+  }
+`;
+// const DateInput = styled.input`
+//   padding-top: 0 !important;
+//   flex-basis: 50%;
+//   &::-webkit-calendar-picker-indicator {
+//     filter: brightness(0) invert(1) sepia(1) saturate(500%) hue-rotate(330deg);
+//   }
+// `;
+
+const AddTransactionHeader = styled(Typography)`
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
 
 const AddTransactionForm = () => {
   const [checked, setChecked] = useState(false);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState();
+  console.log("value", value?.$d);
   const handleChange = (e) => {
     setChecked((prevState) => {
       console.log("1", !prevState);
@@ -72,46 +72,39 @@ const AddTransactionForm = () => {
     });
   };
   return (
-    <ContainerMui
-      sx={{
-        display: "flex",
-        borderRadius: "30px",
-        marginTop: "60px",
-        backgroundColor: "#fff",
-      }}
-      style={{ justifyContent: "center" }}
-    >
-      <StyledFormBox>
-        <Typography>Add transaction</Typography>
-        <Stack direction="row" alignItems="center">
-          <StyledTypography color={checked ? "#E0E0E0" : "#24CCA7"}>
-            Income
-          </StyledTypography>
-          <MaterialUISwitch sx={{ m: 1 }} onChange={handleChange} />
-          <StyledTypography color={checked ? "#FF6596" : "#E0E0E0"}>
-            Expense
-          </StyledTypography>
-        </Stack>
-        <Stack direction="row">
-          <TextField id="standard-basic" label="0.00" variant="standard" />
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer
-              components={["DatePicker"]}
-              style={{ padding: "0px" }}
-            >
-              <DatePicker
-                value={value}
-                onChange={(newValue) => setValue(newValue)}
-                label="Data"
-                slotProps={{
-                  textField: { size: "small", variant: "standard" },
-                }}
-              />
-            </DemoContainer>
-          </LocalizationProvider>
-        </Stack>
-      </StyledFormBox>
-    </ContainerMui>
+    <AddTransactionWrapper>
+      <AddTransactionHeader>Add transaction</AddTransactionHeader>
+      <Stack direction="row" alignItems="center">
+        <StyledTypography color={checked ? "#E0E0E0" : "#24CCA7"}>
+          Income
+        </StyledTypography>
+        <MaterialUISwitch sx={{ m: 1 }} onChange={handleChange} />
+        <StyledTypography color={checked ? "#FF6596" : "#E0E0E0"}>
+          Expense
+        </StyledTypography>
+      </Stack>
+      <FlexWrapperBox>
+        <TextField id="standard-basic" label="0.00" variant="standard" />
+        {/* <DateInput type="date" onChange={(newValue) => setValue(newValue)} /> */}
+        <DatePicker
+          label="Data"
+          onChange={(newValue) => setValue(newValue)}
+          slotProps={{ textField: { size: "medium", variant: "standard" } }}
+        />
+      </FlexWrapperBox>
+      <FlexWrapperBox>
+        <TextField
+          id="comment"
+          label="Comment"
+          variant="standard"
+          style={{ marginTop: "40px" }}
+        />
+        <MainButton variant="contained">ADD</MainButton>
+        <SecondaryButton variant="outlined" color="info">
+          Cancel
+        </SecondaryButton>
+      </FlexWrapperBox>
+    </AddTransactionWrapper>
   );
 };
 

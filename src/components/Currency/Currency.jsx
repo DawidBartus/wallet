@@ -35,7 +35,7 @@ const TableStyledContainer = styled.ul`
   }
   @media (max-width: 480px) {
     display: none;
-    height: 0;
+    margin-top: 15px;
     min-height: 210px;
   }
 `;

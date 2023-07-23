@@ -8,7 +8,7 @@ const StyledFormBox = styled(Box)`
   border-radius: 20px;
   height: auto;
   width: 100%;
-  max-width: 408px;
+  max-width: 450px;
   gap: 20px;
   justify-content: space-evenly;
 

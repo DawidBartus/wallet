@@ -5,7 +5,11 @@ const ModalAddTransaction = (props) => {
   const { open, close } = props;
 
   return (
-    <Modal open={open} onClose={close}>
+    <Modal
+      open={open}
+      onClose={close}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <AddTransactionForm />
     </Modal>
   );

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../Redux/transactionsSlice";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const BalanceSection = styled(Box)`
   min-width: 120px;
@@ -18,6 +19,8 @@ const BalanceSection = styled(Box)`
 const Balance = () => {
   const dispatch = useDispatch();
   const transactions = useSelector((state) => state.transaction.transactions);
+  const location = useLocation();
+  const locationHome = location.pathname === "/home";
 
   useEffect(() => {
     dispatch(getBalance());
@@ -26,7 +29,7 @@ const Balance = () => {
   const balance = useSelector((state) => state.transaction.saldo);
 
   return (
-    <BalanceSection>
+    <BalanceSection style={{ display: locationHome ? "block" : "none" }}>
       <Typography style={{ color: "#A6A6A6" }}>Your Balance</Typography>
       <Typography variant="balance">$ {balance}</Typography>
     </BalanceSection>

@@ -1,17 +1,21 @@
 import { Modal } from "@mui/material";
 import AddTransactionForm from "./AddTransactionForm";
+import styled from "styled-components";
+
+const TransactionModal = styled(Modal)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 const ModalAddTransaction = (props) => {
   const { open, close } = props;
 
   return (
-    <Modal
-      open={open}
-      onClose={close}
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
+    <TransactionModal open={open} onClose={close}>
       <AddTransactionForm />
-    </Modal>
+    </TransactionModal>
   );
 };
 

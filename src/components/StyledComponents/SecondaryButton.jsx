@@ -7,6 +7,7 @@ const SecondaryButton = styled(Button)`
   width: 100%;
   min-width: 280px;
   max-width: 300px;
+  height: 50px;
 `;
 
 export default SecondaryButton;

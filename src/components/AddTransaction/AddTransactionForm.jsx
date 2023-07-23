@@ -1,4 +1,4 @@
-import { TextField, Typography, Box } from "@mui/material";
+import { TextField, Box } from "@mui/material";
 import { useState } from "react";
 import { Stack } from "@mui/system";
 import StyledTypography from "../StyledComponents/StyledTypography";
@@ -8,27 +8,6 @@ import { DatePicker } from "@mui/x-date-pickers";
 import MainButton from "../StyledComponents/MainButton";
 import SecondaryButton from "../StyledComponents/SecondaryButton";
 
-const FlexWrapperBox = styled(Box)`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  text-align: center;
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-  @media (min-width: 601px) {
-    flex-direction: row;
-    gap: 32px;
-  }
-`;
-const SecondaryWrapperBox = styled(Box)`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 40px;
-`;
-
 const AddTransactionWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -37,12 +16,11 @@ const AddTransactionWrapper = styled(Box)`
   margin-top: 60px;
   justify-content: space-evenly;
   align-items: center;
-  padding: 30px;
   height: 100vh;
-  max-height: 540px;
+  max-height: 500px;
   @media (min-width: 600px) {
     width: 100%;
-    max-width: 600px;
+    max-width: 540px;
   }
   @media (max-width: 600px) {
     height: 100vh;
@@ -51,8 +29,32 @@ const AddTransactionWrapper = styled(Box)`
   }
 `;
 
-const AddTransactionHeader = styled(Typography)`
+const FlexWrapperBox = styled(Box)`
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  text-align: center;
+  width: calc(100% - 40px);
+  max-width: 394px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+  @media (min-width: 601px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+`;
+const ButtonFlexWrapper = styled(Box)`
+  width: calc(100% - 40px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const AddTransactionHeader = styled.p`
   color: #000;
+  margin: 0;
   text-align: center;
   font-family: Poppins;
   font-size: 24px;
@@ -62,7 +64,8 @@ const AddTransactionHeader = styled(Typography)`
 `;
 const CommentField = styled(TextField)`
   margin-top: 40px;
-  width: 100%;
+  width: calc(100% - 40px);
+  min-width: 280px;
   max-width: 392px;
 `;
 
@@ -90,16 +93,14 @@ const AddTransactionForm = () => {
       </Stack>
       <FlexWrapperBox>
         <TextField id="standard-basic" label="0.00" variant="standard" />
-        {/* <DateInput type="date" onChange={(newValue) => setValue(newValue)} /> */}
         <DatePicker
           label="Data"
           onChange={(newValue) => setValue(newValue)}
           slotProps={{ textField: { size: "medium", variant: "standard" } }}
         />
       </FlexWrapperBox>
-
       <CommentField id="comment" label="Comment" variant="standard" />
-      <SecondaryWrapperBox>
+      <ButtonFlexWrapper>
         <MainButton
           variant="contained"
           style={{ width: "100%", maxWidth: "300px" }}
@@ -109,7 +110,7 @@ const AddTransactionForm = () => {
         <SecondaryButton variant="outlined" color="info">
           Cancel
         </SecondaryButton>
-      </SecondaryWrapperBox>
+      </ButtonFlexWrapper>
     </AddTransactionWrapper>
   );
 };

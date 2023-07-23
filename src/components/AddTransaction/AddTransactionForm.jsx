@@ -12,16 +12,21 @@ const FlexWrapperBox = styled(Box)`
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 40px;
   text-align: center;
   @media (max-width: 600px) {
     flex-direction: column;
   }
-
   @media (min-width: 601px) {
     flex-direction: row;
     gap: 32px;
   }
+`;
+const SecondaryWrapperBox = styled(Box)`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
 `;
 
 const AddTransactionWrapper = styled(Box)`
@@ -30,9 +35,11 @@ const AddTransactionWrapper = styled(Box)`
   background-color: #fff;
   border-radius: 30px;
   margin-top: 60px;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   padding: 30px;
+  height: 100vh;
+  max-height: 540px;
   @media (min-width: 600px) {
     width: 100%;
     max-width: 600px;
@@ -43,13 +50,6 @@ const AddTransactionWrapper = styled(Box)`
     margin-top: 0;
   }
 `;
-// const DateInput = styled.input`
-//   padding-top: 0 !important;
-//   flex-basis: 50%;
-//   &::-webkit-calendar-picker-indicator {
-//     filter: brightness(0) invert(1) sepia(1) saturate(500%) hue-rotate(330deg);
-//   }
-// `;
 
 const AddTransactionHeader = styled(Typography)`
   color: #000;
@@ -59,6 +59,11 @@ const AddTransactionHeader = styled(Typography)`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+`;
+const CommentField = styled(TextField)`
+  margin-top: 40px;
+  width: 100%;
+  max-width: 392px;
 `;
 
 const AddTransactionForm = () => {
@@ -92,18 +97,19 @@ const AddTransactionForm = () => {
           slotProps={{ textField: { size: "medium", variant: "standard" } }}
         />
       </FlexWrapperBox>
-      <FlexWrapperBox>
-        <TextField
-          id="comment"
-          label="Comment"
-          variant="standard"
-          style={{ marginTop: "40px" }}
-        />
-        <MainButton variant="contained">ADD</MainButton>
+
+      <CommentField id="comment" label="Comment" variant="standard" />
+      <SecondaryWrapperBox>
+        <MainButton
+          variant="contained"
+          style={{ width: "100%", maxWidth: "300px" }}
+        >
+          ADD
+        </MainButton>
         <SecondaryButton variant="outlined" color="info">
           Cancel
         </SecondaryButton>
-      </FlexWrapperBox>
+      </SecondaryWrapperBox>
     </AddTransactionWrapper>
   );
 };

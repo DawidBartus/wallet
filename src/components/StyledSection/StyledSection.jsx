@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Section = styled.section`
   width: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 1279px) {
     display: flex;
     justify-content: center;
     flex-direction: column;

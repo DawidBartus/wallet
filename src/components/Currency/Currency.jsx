@@ -15,7 +15,7 @@ const TableStyledContainer = styled.ul`
   border-radius: 30px;
   overflow: hidden;
   position: relative;
-
+  min-height: 210px;
   li:first-child {
     background-color: rgb(255 255 255 / 22%);
     margin-bottom: 16px;
@@ -24,16 +24,15 @@ const TableStyledContainer = styled.ul`
     margin-bottom: 20px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1279px) {
     margin-top: 0;
     height: 100%;
   }
-  @media (min-width: 768px) {
-    min-height: 210px;
+  @media (min-width: 1280px) {
     height: calc(100vh - 390px);
     max-height: 550px;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 767px) {
     display: none;
     margin-top: 15px;
     min-height: 210px;

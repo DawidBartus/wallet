@@ -3,27 +3,26 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../Redux/transactionsSlice";
 import { useEffect } from "react";
-// import { useLocation } from "react-router-dom";
 
 const BalanceSection = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   min-width: 120px;
+  width: 100%;
   max-width: 400px;
+  height: 80px;
   background-color: #ffffff;
   border-radius: 30px;
-  padding: 4px 0px 11px 40px;
-  @media (max-width: 768px) {
+  padding-left: 40px;
+  @media (max-width: 1279px) {
     margin-right: 32px;
-  }
-  @media (max-width: 600px) {
-    display: none;
   }
 `;
 
 const Balance = () => {
   const dispatch = useDispatch();
   const transactions = useSelector((state) => state.transaction.transactions);
-  // const location = useLocation();
-  // const locationHome = location.pathname === "/home";
 
   useEffect(() => {
     dispatch(getBalance());

@@ -9,7 +9,7 @@ const StyledReactLink = styled(Link)`
 `;
 const StyledReactLinkMobile = styled(Link)`
   display: none;
-  @media (max-width: 480px) {
+  @media (max-width: 767px) {
     text-decoration: none;
     display: flex;
     width: 100%;

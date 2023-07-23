@@ -10,10 +10,10 @@ const StyledBoxWithMainSVG = styled(Box)`
   padding-top: 60px;
   max-height: 600px;
 
-  @media (max-width: 482px) {
+  @media (max-width: 767px) {
     display: none;
   }
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     flex-direction: column;
     gap: 30px;
   }

@@ -12,10 +12,10 @@ const StyledFormBox = styled(Box)`
   gap: 20px;
   justify-content: space-evenly;
 
-  @media (max-width: 482px) {
+  @media (max-width: 767px) {
     padding: 113px 20px 107px;
   }
-  @media (min-width: 482px) {
+  @media (min-width: 768px) {
     background-color: #fff;
     padding: 40px 60px 60px;
     margin-top: 50px;

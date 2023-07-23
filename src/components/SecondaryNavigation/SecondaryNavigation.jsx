@@ -11,7 +11,7 @@ import StyledReactLink, {
 } from "../StyledComponents/StyledReactLink";
 
 const NavigationButtonText = styled(Typography)`
-  @media (max-width: 480px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;
@@ -42,7 +42,7 @@ const StyledHomeIcon = styled(Home)`
     height: 44px;
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: 767px) {
     padding-right: 20px;
     width: 24px;
     height: 24px;
@@ -60,7 +60,7 @@ const StyledStatisticIcon = styled(Statistic)`
     height: 44px;
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     padding-right: 20px;
     width: 24px;
     height: 24px;

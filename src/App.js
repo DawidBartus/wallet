@@ -8,7 +8,7 @@ import Statistic from "./components/Statistic/Statistic";
 import Currency from "./components/Currency/Currency";
 import Settings from "./components/Settings/Settings";
 import Transaction from "./components/Transaction/Transaction";
-import VerticalTable from "./components/Transaction/VerticalTable";
+// import VerticalTable from "./components/Transaction/VerticalTable";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -28,7 +28,7 @@ function App() {
               <Route path="/home/statistic" element={<Statistic />} />
               <Route path="/home/currency" element={<Currency />} />
               <Route path="/home/settings" element={<Settings />} />
-              <Route path="/home/devtest" element={<VerticalTable />} />
+              {/* <Route path="/home/devtest" element={<VerticalTable />} /> */}
             </Route>
           </Route>
         </Routes>

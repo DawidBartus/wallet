@@ -72,7 +72,7 @@ const CommentField = styled(TextField)`
 const AddTransactionForm = () => {
   const [checked, setChecked] = useState(false);
   const [value, setValue] = useState();
-  console.log("value", value?.$d);
+
   const handleChange = (e) => {
     setChecked((prevState) => {
       console.log("1", !prevState);

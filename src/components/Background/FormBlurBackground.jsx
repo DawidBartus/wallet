@@ -3,16 +3,14 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const FormBlurBackground = styled(Box)`
-  background-color: transparent;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  @media (min-width: 769px) {
-    width: 100%;
+  display: none;
+  @media (min-width: 1278px) {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    width: 50%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
     background-color: rgba(255, 255, 255, 0.4);
   }
 `;

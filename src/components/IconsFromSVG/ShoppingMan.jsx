@@ -11,14 +11,13 @@ import styled, { keyframes } from "styled-components";
 
 const StyledSVG = styled.svg`
   transition: width 1s, height 1s;
-
-  @media (max-width: 768px) {
+  @media (max-width: 1278px) {
     width: 100%;
     max-width: 260px;
     height: 250px;
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1279px) {
     width: 100%;
     max-width: 435px;
     height: 420px;
@@ -26,38 +25,13 @@ const StyledSVG = styled.svg`
   }
 `;
 const StyledGroup = styled.g`
-  @media (max-width: 768px) {
+  @media (max-width: 1278px) {
     scale: 1;
   }
-  @media (min-width: 769px) {
+  @media (min-width: 1279px) {
     scale: 1.67;
   }
 `;
-// const moveRightLeft = keyframes`
-//   0% {
-//     transform: translateX(0) translateY(0);
-//   }
-//   25% {
-//     transform: translateX(15px) translateY(15px);
-//   }
-//   50% {
-//     transform: translateX(0) translateY(0);
-//   }
-//   75% {
-//     transform: translateX(-15px) translateY(-15px);
-//   }
-//   100% {
-//     transform: translateX(0) translateY(0);
-//   }
-// `;
-// const DollarIcon = styled(IconDollar)`
-//   width: 100px;
-//   height: 100px;
-//   overflow: visible;
-//   & path {
-//     animation: ${moveRightLeft} 4s linear infinite;
-//   }
-// `;
 const wobble = keyframes`
   0%,
   2%,
@@ -93,7 +67,6 @@ const wobble = keyframes`
 // 13s hold
 const CardIconAnimation = styled(CardIcon)`
   overflow: visible;
-
   & path {
     animation: ${wobble} 15s linear infinite;
   }

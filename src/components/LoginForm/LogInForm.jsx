@@ -30,77 +30,71 @@ const LogInForm = () => {
   };
 
   return (
-    <>
-      <Section>
-        <StyledBoxWithMainSVG component="div">
-          <ShoppingMan />
-          <Typography variant="header" style={{ fontWeight: 400 }}>
-            Finance App
-          </Typography>
-        </StyledBoxWithMainSVG>
-        <StyledFormBlurBackground>
-          <StyledFormBox component="form" onSubmit={handleSubmit}>
-            <Typography variant="header" style={{ marginBottom: "40px" }}>
-              <Wallet style={{ paddingRight: "20px" }} />
-              Wallet
-            </Typography>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Email"
-              autoComplete="email"
-              required
-              startAdornment={
-                <InputAdornment position="start">
-                  <EmailRoundedIcon color="icon" />
-                </InputAdornment>
-              }
-              style={{ width: "100%", marginTop: "20px" }}
-            />
-            <Input
-              id="password"
-              placeholder="Password"
-              name="password"
-              type={visible ? "text" : "password"}
-              inputProps={{ min: 6, max: 12 }}
-              required
-              startAdornment={
-                <InputAdornment position="start">
-                  <LockRoundedIcon color="icon" />
-                </InputAdornment>
-              }
-              endAdornment={
-                <InputAdornment
-                  position="end"
-                  onClick={togglePasswordVisibility}
-                >
-                  {visible ? (
-                    <VisibilityOffIcon color="icon" />
-                  ) : (
-                    <VisibilityIcon color="icon" />
-                  )}
-                </InputAdornment>
-              }
-              style={{ width: "100%", margin: "20px 0" }}
-            />
-            <MainButton variant="contained" type="submit">
-              Log In
-            </MainButton>
-            <StyledReactLink to="/register">
-              <SecondaryButton variant="outlined" color="info">
-                Register
-              </SecondaryButton>
-            </StyledReactLink>
-            <StyledReactLink to="/home">
-              <SecondaryButton variant="outlined" color="info">
-                DEV ROUTE TO HOME
-              </SecondaryButton>
-            </StyledReactLink>
-          </StyledFormBox>
-        </StyledFormBlurBackground>
-      </Section>
-    </>
+    <Section>
+      <StyledBoxWithMainSVG component="div">
+        <ShoppingMan />
+        <Typography variant="header" style={{ fontWeight: 400 }}>
+          Finance App
+        </Typography>
+      </StyledBoxWithMainSVG>
+      <StyledFormBlurBackground />
+      <StyledFormBox component="form" onSubmit={handleSubmit}>
+        <Typography variant="header" style={{ marginBottom: "40px" }}>
+          <Wallet style={{ paddingRight: "20px" }} />
+          Wallet
+        </Typography>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          autoComplete="email"
+          required
+          startAdornment={
+            <InputAdornment position="start">
+              <EmailRoundedIcon color="icon" />
+            </InputAdornment>
+          }
+          style={{ width: "100%", marginTop: "20px" }}
+        />
+        <Input
+          id="password"
+          placeholder="Password"
+          name="password"
+          type={visible ? "text" : "password"}
+          inputProps={{ min: 6, max: 12 }}
+          required
+          startAdornment={
+            <InputAdornment position="start">
+              <LockRoundedIcon color="icon" />
+            </InputAdornment>
+          }
+          endAdornment={
+            <InputAdornment position="end" onClick={togglePasswordVisibility}>
+              {visible ? (
+                <VisibilityOffIcon color="icon" />
+              ) : (
+                <VisibilityIcon color="icon" />
+              )}
+            </InputAdornment>
+          }
+          style={{ width: "100%", margin: "20px 0" }}
+        />
+        <MainButton variant="contained" type="submit">
+          Log In
+        </MainButton>
+        <StyledReactLink to="/register">
+          <SecondaryButton variant="outlined" color="info">
+            Register
+          </SecondaryButton>
+        </StyledReactLink>
+        <StyledReactLink to="/home">
+          <SecondaryButton variant="outlined" color="info">
+            DEV ROUTE TO HOME
+          </SecondaryButton>
+        </StyledReactLink>
+      </StyledFormBox>
+    </Section>
   );
 };
 

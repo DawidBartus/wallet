@@ -8,10 +8,24 @@ import Avatar from "@mui/material/Avatar";
 import { ReactComponent as Wallet } from "../images/wallet.svg";
 import { Outlet } from "react-router-dom";
 import { ReactComponent as Exit } from "../images/exit.svg";
-import StyledFormBlurBackground from "../Background/FormBlurBackground";
 import Settings from "../Settings/Settings";
 import { Button, Modal } from "@mui/material";
 import { useState } from "react";
+import styled from "styled-components";
+
+const BlurSection = styled(Box)`
+background-color: transparent;
+width: 100%;
+display: flex;
+justify-content: center;
+position: fixed;
+@media (min-width: 769px) {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+  }
+`;
 
 const ResponsiveAppBar = () => {
   const [open, setOpen] = useState(false);
@@ -58,9 +72,9 @@ const ResponsiveAppBar = () => {
       <Modal open={open} onClose={handleClose}>
         <Settings />
       </Modal>
-      <StyledFormBlurBackground>
+      <BlurSection>
         <Outlet />
-      </StyledFormBlurBackground>
+      </BlurSection>
     </>
   );
 };

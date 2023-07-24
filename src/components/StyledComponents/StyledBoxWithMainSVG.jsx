@@ -7,7 +7,6 @@ const StyledBoxWithMainSVG = styled(Box)`
   justify-content: space-evenly;
   width: 100%;
   max-width: 550px;
-  padding-top: 60px;
   max-height: 600px;
 
   @media (max-width: 767px) {
@@ -16,6 +15,7 @@ const StyledBoxWithMainSVG = styled(Box)`
   @media (min-width: 768px) {
     flex-direction: column;
     gap: 30px;
+    padding-top: 60px;
   }
 `;
 

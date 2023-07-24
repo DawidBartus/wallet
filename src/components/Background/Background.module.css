@@ -19,7 +19,7 @@
   right: -250px;
   transform: rotate(21.94deg);
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1278px) {
   .purpleBlob,
   .notPurpleBlob,
   .background {
@@ -27,7 +27,7 @@
     animation: fade-out 1s forwards;
   }
 }
-@media screen and (min-width: 482px) {
+@media screen and (min-width: 767px) {
   .purpleBlob,
   .notPurpleBlob,
   .background {

@@ -9,13 +9,14 @@ const TableStyledContainer = styled.ul`
   list-style: none;
   padding: 0px;
   width: 100%;
-  max-width: 440px;
+  max-width: 393px;
   background-color: #4a56e2;
   margin-top: 32px;
   border-radius: 30px;
   overflow: hidden;
   position: relative;
-  min-height: 210px;
+  height: 100%;
+  max-height: 331px;
   li:first-child {
     background-color: rgb(255 255 255 / 22%);
     margin-bottom: 16px;
@@ -26,16 +27,12 @@ const TableStyledContainer = styled.ul`
 
   @media (max-width: 1279px) {
     margin-top: 0;
-    height: 100%;
-  }
-  @media (min-width: 1280px) {
-    height: calc(100vh - 390px);
-    max-height: 550px;
+    max-height: 182px;
   }
   @media (max-width: 767px) {
     display: none;
     margin-top: 15px;
-    min-height: 210px;
+    max-height: 174px;
   }
 `;
 

@@ -10,13 +10,13 @@ import styled from "@emotion/styled";
 const StyledSVG = styled.svg`
   transition: width 1s, height 1s;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1278px) {
     width: 100%;
     max-width: 260px;
     height: 250px;
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1279px) {
     width: 100%;
     max-width: 435px;
     height: 420px;
@@ -24,10 +24,10 @@ const StyledSVG = styled.svg`
   }
 `;
 const StyledGroup = styled.g`
-  @media (max-width: 768px) {
+  @media (max-width: 1278px) {
     scale: 1;
   }
-  @media (min-width: 769px) {
+  @media (min-width: 1279px) {
     scale: 1.67;
   }
 `;

@@ -13,6 +13,7 @@ import { Provider } from "react-redux";
 import store from "./Redux/store";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import StyledFormBlurBackground from "./components/Background/FormBlurBackground";
 
 function App() {
   return (
@@ -28,7 +29,10 @@ function App() {
               <Route path="/home/statistic" element={<Statistic />} />
               <Route path="/home/currency" element={<Currency />} />
               <Route path="/home/settings" element={<Settings />} />
-              {/* <Route path="/home/devtest" element={<VerticalTable />} /> */}
+              <Route
+                path="/home/devtest"
+                element={<StyledFormBlurBackground />}
+              />
             </Route>
           </Route>
         </Routes>

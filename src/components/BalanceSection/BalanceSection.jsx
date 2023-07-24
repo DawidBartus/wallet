@@ -5,19 +5,20 @@ import { getBalance } from "../../Redux/transactionsSlice";
 import { useEffect } from "react";
 
 const BalanceSection = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  min-width: 120px;
+  max-width: 395px;
+  min-width: 280px;
   width: 100%;
-  max-width: 400px;
-  height: 80px;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 30px;
   padding-left: 40px;
-  @media (max-width: 1279px) {
-    margin-right: 32px;
-  }
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  // @media (max-width: 1279px) {
+  //   margin-right: 32px;
+  // }
 `;
 
 const Balance = () => {

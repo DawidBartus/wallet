@@ -11,9 +11,9 @@ const TableStyledContainer = styled.ul`
   width: 100%;
   max-width: 393px;
   background-color: #4a56e2;
-  margin-top: 32px;
   border-radius: 30px;
   overflow: hidden;
+  overflow-y: auto;
   position: relative;
   height: 100%;
   max-height: 331px;
@@ -33,6 +33,9 @@ const TableStyledContainer = styled.ul`
     display: none;
     margin-top: 15px;
     max-height: 174px;
+  }
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 
@@ -84,7 +87,7 @@ const Currency = () => {
   // Currency widow close when on /currency path and window size is greater then mobile
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 480 && locationCurrency) {
+      if (window.innerWidth > 767 && locationCurrency) {
         navigate("/home");
       }
     };

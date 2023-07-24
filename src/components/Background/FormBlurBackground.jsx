@@ -8,14 +8,15 @@ const FormBlurBackground = styled(Box)`
     position: fixed;
     bottom: 0;
     right: 0;
-    z-index: -1;
+    z-index: 999;
     width: 50%;
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur;
   }
 `;
 
-const StyledFormBlurBackground = (props) => {
+const StyledFormBlurBackground = () => {
   const location = useLocation();
 
   const shouldChangeStyle =
@@ -25,19 +26,11 @@ const StyledFormBlurBackground = (props) => {
       ? true
       : false;
 
-  const { children } = props;
-  const blur = shouldChangeStyle ? "" : "blur(10px)";
-  const align = shouldChangeStyle ? "center" : "flex-start";
-  const fixed = shouldChangeStyle ? "" : "fixed";
+  // const blur = shouldChangeStyle ? "" : "blur(10px)";
+  // const align = shouldChangeStyle ? "center" : "flex-start";
+  // const fixed = shouldChangeStyle ? "" : "fixed";
 
-  return (
-    <FormBlurBackground
-      component="div"
-      style={{ backdropFilter: blur, alignItems: align, position: fixed }}
-    >
-      {children}
-    </FormBlurBackground>
-  );
+  return <FormBlurBackground component="div"></FormBlurBackground>;
 };
 
 export default StyledFormBlurBackground;

@@ -8,12 +8,14 @@ import SecondaryNavigation from "../SecondaryNavigation/SecondaryNavigation";
 import { useEffect, useState } from "react";
 
 const NavigationWrapper = styled(Box)`
+  position: relative;
   width: 100%;
-  max-width: 480px;
+  max-width: 462px;
   height: 100vh;
   margin-top: 40px;
   padding-right: 24px;
   gap: 32px;
+
   @media (max-width: 1279px) {
     display: flex;
     width: 100%;
@@ -26,11 +28,45 @@ const NavigationWrapper = styled(Box)`
 `;
 
 const StyledDivWrapper = styled.div`
-  @media (max-width: 1279px) {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 768px) {
+    align-items: flex-start;
+  }
+`;
+
+const BoxShadow = styled.div`
+  position: absolute;
+  height: 100vh;
+  width: 1px;
+  top: 0;
+  right: 0;
+  background: #e7e5f2;
+  filter: drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.05));
+  &::after {
+    filter: drop-shadow(1px 0px 0px rgba(255, 255, 255, 0.6));
+  }
+  @media (max-width: 1278px) {
+    display: none;
+  }
+`;
+
+const HomePageSection = styled.section`
+  width: 100%;
+  max-width: 1488px;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0 20px;
+  @media (min-width: 768px) {
+    padding: 0 32px;
+  }
+  @media (min-width: 1279px) {
+    padding: 0 16px;
+    flex-direction: row;
   }
 `;
 
@@ -52,24 +88,19 @@ const HomePage = () => {
   }, [windowWidth]);
 
   return (
-    <Section
-      style={{
-        maxWidth: "1488px",
-        padding: "0px 24px",
-        alignItems: "flex-start",
-      }}
-    >
+    <HomePageSection>
       <NavigationWrapper>
         <StyledDivWrapper>
           <SecondaryNavigation />
           {windowWidth || isHome ? <Balance /> : ""}
         </StyledDivWrapper>
         {isCurrency ? "" : <Currency />}
+        <BoxShadow />
       </NavigationWrapper>
       <Box style={{ width: "100%" }}>
         <Outlet />
       </Box>
-    </Section>
+    </HomePageSection>
   );
 };
 

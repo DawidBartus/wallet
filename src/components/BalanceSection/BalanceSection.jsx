@@ -1,8 +1,8 @@
-import { Box, Typography } from "@mui/material";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../Redux/transactionsSlice";
 import { useEffect } from "react";
+import { Box, Typography } from "@mui/material";
+import styled from "styled-components";
 
 const BalanceSection = styled(Box)`
   max-width: 395px;

@@ -5,10 +5,10 @@ import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import MainButton from "../StyledComponents/MainButton";
 import { useState } from "react";
 
-const ChangePassword = () => {
+const ChangePassword = ({ active }) => {
   const [sent, setSent] = useState(false);
   const [visible, setVisible] = useState(false);
-
+  console.log("password", active);
   const togglePasswordVisibility = () => {
     setVisible((prevState) => !prevState);
   };

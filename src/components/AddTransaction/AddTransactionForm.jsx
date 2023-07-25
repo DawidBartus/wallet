@@ -1,67 +1,37 @@
-import { TextField, Select, MenuItem } from "@mui/material";
 import { useState } from "react";
+// Mui
+import { TextField } from "@mui/material";
 import { Stack } from "@mui/system";
+import { DatePicker } from "@mui/x-date-pickers";
+// Redux
+import { useDispatch } from "react-redux";
+import { addTransaction } from "../../Redux/transactionsSlice";
+// Custom components
 import StyledTypography from "../StyledComponents/StyledTypography";
 import MaterialUISwitch from "../StyledComponents/MaterialUISwitch";
-import { DatePicker } from "@mui/x-date-pickers";
 import MainButton from "../StyledComponents/MainButton";
 import SecondaryButton from "../StyledComponents/SecondaryButton";
-import { useDispatch } from "react-redux";
-import { nanoid } from "nanoid";
-import dayjs from "dayjs";
-import { addTransaction } from "../../Redux/transactionsSlice";
-import { styled } from "@mui/material/styles";
 import AddTransactionWrapper, {
   CommentField,
-  SelectContainer,
   AddTransactionHeader,
   ButtonFlexWrapper,
   FlexWrapperBox,
 } from "./TransactionStyledComponent";
-
-const options = [
-  "Select a category",
-  "Main expenses",
-  "Products",
-  "Car",
-  "Self care",
-  "Child care",
-  "Household products",
-  "Education",
-  "Leisure",
-];
-
-const CustomSelect = styled(Select)(({ theme }) => ({
-  "& .MuiPaper-root": {
-    backgroundColor: "blue",
-  },
-}));
-
-const SelectBar = ({ value, change }) => {
-  return (
-    <SelectContainer>
-      <CustomSelect value={value} onChange={change} variant="standard">
-        {options.map((item) => (
-          <MenuItem key={item} value={item}>
-            {item}
-          </MenuItem>
-        ))}
-      </CustomSelect>
-    </SelectContainer>
-  );
-};
+import SelectBar from "./SelectBar";
+// Other
+import { nanoid } from "nanoid";
+import dayjs from "dayjs";
 
 const AddTransactionForm = ({ onClose }) => {
   const today = dayjs();
-  const formattedDate = today.format("YYYY-MM-DD");
   const dispatch = useDispatch();
+
   const [selected, setSelected] = useState("Select a category");
   const [checked, setChecked] = useState(true);
-  const [value, setValue] = useState(formattedDate);
+  const [value, setValue] = useState(today);
 
   const handleChange = (e) => {
     setChecked((prevState) => {
-      console.log("1", !prevState);
       return !prevState;
     });
   };
@@ -71,25 +41,25 @@ const AddTransactionForm = ({ onClose }) => {
 
   const handleNewTransaction = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const isIncome = checked;
-    const date = value;
-    const category = isIncome ? "Income" : selected;
-    const sum = parseInt(form.amount.value);
-    const comment = form.comment.value;
-    const id = nanoid();
+
+    let form = e.target;
+    let id = nanoid();
 
     const newTransaction = {
       id,
-      date,
-      type: isIncome,
-      category,
-      comment,
-      sum,
+      date: value.format("YY-MM-DD"),
+      type: checked,
+      category: checked ? "Income" : selected,
+      comment: form.comment.value,
+      sum: parseInt(form.amount.value),
     };
+
     dispatch(addTransaction(newTransaction));
-    console.log(newTransaction);
+
+    form.reset();
+    setSelected("Select a category");
   };
+
   return (
     <AddTransactionWrapper onSubmit={handleNewTransaction}>
       <AddTransactionHeader>Add transaction</AddTransactionHeader>
@@ -115,7 +85,6 @@ const AddTransactionForm = ({ onClose }) => {
           variant="standard"
         />
         <DatePicker
-          defaultValue={today}
           name="data"
           label="Data"
           onChange={(newValue) => setValue(newValue)}

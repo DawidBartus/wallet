@@ -3,9 +3,9 @@ import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import MainButton from "../StyledComponents/MainButton";
 import { useState } from "react";
 
-const ChangeEmail = () => {
+const ChangeEmail = ({ active }) => {
   const [sent, setSent] = useState(false);
-
+  console.log("email", active);
   const handleSave = (e) => {
     e.preventDefault();
 

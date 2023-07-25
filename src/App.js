@@ -29,7 +29,11 @@ function App() {
               <Route index element={<Transaction />} />
               <Route path="/home/statistic" element={<Statistic />} />
               <Route path="/home/currency" element={<Currency />} />
-              <Route path="/home/settings" element={<Settings />} />
+              <Route path="/home/settings" element={<Settings />}>
+                <Route path="/home/settings/email" element={<Settings />} />
+                <Route path="/home/settings/password" element={<Settings />} />
+              </Route>
+
               <Route
                 path="/home/devtest"
                 element={<StyledFormBlurBackground />}

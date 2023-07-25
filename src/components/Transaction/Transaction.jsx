@@ -4,7 +4,7 @@ import { removeTransaction } from "../../Redux/transactionsSlice";
 // Components
 import VerticalTable from "./VerticalTable";
 import HorizontalTable from "./HorizontalTable";
-import EditTransaction from "../EditTransaction/EditTransaction";
+// import EditTransaction from "../EditTransaction/EditTransaction";
 // import EditTransaction from "../EditTransaction/EditTransaction";
 
 const Transaction = () => {
@@ -14,7 +14,7 @@ const Transaction = () => {
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState();
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const handleClose = () => setOpen(false);
 
   const dispatch = useDispatch();
 
@@ -25,12 +25,12 @@ const Transaction = () => {
     // dalsza logika do przesłania do backendu
   };
 
-  const handleEdit = (e) => {
-    let id = e.target.closest(".BodyTableRow")?.id;
-    let transaction = dataObject.find((item) => item.id === id);
-    setEdit(transaction);
-    handleOpen();
-  };
+  // const handleEdit = (e) => {
+  //   let id = e.target.closest(".BodyTableRow")?.id;
+  //   let transaction = dataObject.find((item) => item.id === id);
+  //   setEdit(transaction);
+  //   handleOpen();
+  // };
 
   useEffect(() => {
     const handleResize = () => {
@@ -47,15 +47,15 @@ const Transaction = () => {
   return (
     <>
       {isMobile ? (
-        <HorizontalTable edit={handleEdit} remove={handleRemove} />
+        <HorizontalTable remove={handleRemove} />
       ) : (
-        <VerticalTable edit={handleEdit} remove={handleRemove} />
+        <VerticalTable remove={handleRemove} />
       )}
-      {edit ? (
+      {/* {edit ? (
         <EditTransaction open={open} close={handleClose} toChange={edit} />
       ) : (
         ""
-      )}
+      )} */}
     </>
   );
 };

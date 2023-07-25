@@ -10,12 +10,20 @@ const StyledAddButton = styled(Button)`
   border-radius: 50% !important;
   font-size: 40px !important;
   color: white !important;
+  position: absolute !important;
+  bottom: 20px;
+  right: 10px;
+  @media (min-width: 768px) {
+    bottom: 40px;
+    right: 40px;
+  }
 `;
 
-const AddTransactionButton = () => {
+const AddTransactionButton = ({ addTransaction }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   return (
     <>
       <StyledAddButton variant="contained" onClick={handleOpen}>

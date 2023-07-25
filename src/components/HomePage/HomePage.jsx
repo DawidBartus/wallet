@@ -1,25 +1,30 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
 import styled from "styled-components";
-import Section from "../StyledSection/StyledSection";
 import Currency from "../Currency/Currency";
 import Balance from "../BalanceSection/BalanceSection";
 import SecondaryNavigation from "../SecondaryNavigation/SecondaryNavigation";
 import { useEffect, useState } from "react";
+import AddTransactionButton from "../AddTransaction/AddTransaction";
+import { useDispatch } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const NavigationWrapper = styled(Box)`
   position: relative;
   width: 100%;
-  max-width: 462px;
+  max-width: 464px;
   height: 100vh;
-  margin-top: 40px;
-  padding-right: 24px;
+  padding-top: 15px;
   gap: 32px;
-
+  @media (min-width: 768px) {
+    padding-top: 32px;
+  }
+  @media (min-width: 1279px) {
+    padding-top: 40px;
+  }
   @media (max-width: 1279px) {
     display: flex;
     width: 100%;
-    padding: 0;
     height: auto;
     justify-content: center;
     max-width: none;
@@ -32,7 +37,7 @@ const StyledDivWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (min-width: 768px) {
+  @media (min-width: 767px) {
     align-items: flex-start;
   }
 `;
@@ -69,9 +74,25 @@ const HomePageSection = styled.section`
     flex-direction: row;
   }
 `;
+const BoxOutlet = styled(Box)`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  @media (max-width: 767px) {
+    height: 70vh;
+  }
+  @media (max-width: 1278px) {
+    height: 70vh;
+  }
+  @media (min-width: 1279px) {
+    height: 90vh;
+  }
+`;
 
 const HomePage = () => {
   const location = useLocation();
+
   const isCurrency = location.pathname === "/home/currency";
   const isHome = location.pathname === "/home";
 
@@ -97,9 +118,10 @@ const HomePage = () => {
         {isCurrency ? "" : <Currency />}
         <BoxShadow />
       </NavigationWrapper>
-      <Box style={{ width: "100%" }}>
+      <BoxOutlet>
         <Outlet />
-      </Box>
+        {isHome ? <AddTransactionButton /> : ""}
+      </BoxOutlet>
     </HomePageSection>
   );
 };

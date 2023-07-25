@@ -39,6 +39,9 @@ export const TableData = styled.td`
   &:first-child {
     padding-left: 10px;
   }
+  &:last-child {
+    text-align: center;
+  }
   font-family: Circe;
   font-size: 16px;
   font-style: normal;
@@ -57,4 +60,6 @@ export const TableButton = styled(Button)`
   font-weight: 400;
   line-height: normal;
   border-radius: 18px !important;
+  margin-left: 8px !important;
+  text-transform: none !important;
 `;

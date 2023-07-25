@@ -7,8 +7,11 @@ import styled from "styled-components";
 import { DatePicker } from "@mui/x-date-pickers";
 import MainButton from "../StyledComponents/MainButton";
 import SecondaryButton from "../StyledComponents/SecondaryButton";
+import { useDispatch } from "react-redux";
+import { nanoid } from "nanoid";
+import dayjs from "dayjs";
 
-const AddTransactionWrapper = styled(Box)`
+const AddTransactionWrapper = styled.form`
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -69,9 +72,12 @@ const CommentField = styled(TextField)`
   max-width: 392px;
 `;
 
-const AddTransactionForm = () => {
-  const [checked, setChecked] = useState(false);
-  const [value, setValue] = useState();
+const AddTransactionForm = ({ onClose }) => {
+  const today = dayjs().format("YYYY-MM-DD");
+  console.log(today);
+  const dispatch = useDispatch();
+  const [checked, setChecked] = useState(true);
+  const [value, setValue] = useState(today);
 
   const handleChange = (e) => {
     setChecked((prevState) => {
@@ -79,35 +85,72 @@ const AddTransactionForm = () => {
       return !prevState;
     });
   };
+
+  const handleNewTransaction = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const isIncome = checked;
+    const date = value;
+    const category = isIncome ? "Income" : "expense";
+    const sum = form.amount.value;
+    const comment = form.comment.value;
+    console.log(value);
+    const newTransaction = {
+      id: nanoid(),
+      date,
+      type: isIncome,
+      category,
+      comment,
+      sum,
+    };
+    console.log(newTransaction);
+  };
   return (
-    <AddTransactionWrapper>
+    <AddTransactionWrapper onSubmit={handleNewTransaction}>
       <AddTransactionHeader>Add transaction</AddTransactionHeader>
       <Stack direction="row" alignItems="center">
-        <StyledTypography color={checked ? "#E0E0E0" : "#24CCA7"}>
+        <StyledTypography name="income" color={checked ? "#24CCA7" : "#E0E0E0"}>
           Income
         </StyledTypography>
         <MaterialUISwitch sx={{ m: 1 }} onChange={handleChange} />
-        <StyledTypography color={checked ? "#FF6596" : "#E0E0E0"}>
+        <StyledTypography
+          name="expense"
+          color={checked ? "#E0E0E0" : "#FF6596"}
+        >
           Expense
         </StyledTypography>
       </Stack>
       <FlexWrapperBox>
-        <TextField id="standard-basic" label="0.00" variant="standard" />
+        <TextField
+          required
+          name="amount"
+          id="standard-basic"
+          label="0.00"
+          variant="standard"
+        />
         <DatePicker
+          defaultValue={today}
+          name="data"
           label="Data"
           onChange={(newValue) => setValue(newValue)}
           slotProps={{ textField: { size: "medium", variant: "standard" } }}
         />
       </FlexWrapperBox>
-      <CommentField id="comment" label="Comment" variant="standard" />
+      <CommentField
+        name="comment"
+        id="comment"
+        label="Comment"
+        variant="standard"
+      />
       <ButtonFlexWrapper>
         <MainButton
           variant="contained"
           style={{ width: "100%", maxWidth: "300px" }}
+          type="submit"
         >
           ADD
         </MainButton>
-        <SecondaryButton variant="outlined" color="info">
+        <SecondaryButton variant="outlined" color="info" onClick={onClose}>
           Cancel
         </SecondaryButton>
       </ButtonFlexWrapper>

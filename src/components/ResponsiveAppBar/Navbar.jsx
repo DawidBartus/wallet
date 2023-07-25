@@ -14,7 +14,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const BlurSection = styled(Box)`
-background-color: transparent;
+background-color: #E7EAF2;
 width: 100%;
 display: flex;
 justify-content: center;

@@ -4,29 +4,34 @@ import { ReactComponent as EditIcon } from "../images/edit.svg";
 import React from "react";
 import { useSelector } from "react-redux";
 import AddTransaction from "../StyledComponents/AddTransaction";
-import AddTransactionButton from "../AddTransaction/AddTransaction";
 
 const TableContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
-  max-height: 750px;
+  height: 60vh;
   overflow-x: auto;
-  margin-top: 40px;
-  @media (max-width: 768px) {
-    max-height: 500px;
+  margin-top: 32px;
+  width: 100%;
+  min-width: 282px;
+  max-width: 400px;
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 
 const Table = styled.table`
-  border-collapse: collapse;
   width: 100%;
+  min-width: 282px;
+  max-width: 400px;
+  display: block;
+  border-collapse: collapse;
 `;
 
 const Th = styled.th`
   position: relative;
   border-bottom: 1px solid #dcdcdf;
   text-align: left;
-  width: 100px;
   color: #000;
   font-family: Circe;
   font-size: 18px;
@@ -34,7 +39,9 @@ const Th = styled.th`
   font-weight: 700;
   line-height: normal;
   overflow: hidden;
-  padding: 12px 0px 8px 8px;
+  padding-left: 8px;
+  height: 47px;
+  box-sizing: border-box;
   &::before {
     content: "";
     position: absolute;
@@ -59,16 +66,20 @@ const Td = styled.td`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  width: 100%;
 `;
 const TableButton = styled(Button)`
   color: #fff !important;
-  text-align: center;
-  font-family: Circe;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  text-align: center !important;
+  font-family: Circe !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
   border-radius: 18px !important;
+  text-transform: none !important;
+  width: 67px;
+  height: 26px;
 `;
 const TableRow = styled.tr`
   background-color: #fff;
@@ -77,8 +88,14 @@ const TableRow = styled.tr`
   &.firstOfTh th {
     border-top-left-radius: 10px;
   }
+  &.firstOfTh td {
+    border-top-right-radius: 10px;
+  }
   &.lastOfTh th {
     border-bottom-left-radius: 10px;
+  }
+  &.lastOfTh td {
+    border-bottom-right-radius: 10px;
   }
 `;
 
@@ -129,7 +146,6 @@ const VerticalTable = (props) => {
                       <EditIcon /> Edit
                     </Td>
                   </TableRow>
-
                   <tr style={{ height: "20px" }}></tr>
                 </React.Fragment>
               );
@@ -137,10 +153,7 @@ const VerticalTable = (props) => {
           </tbody>
         </Table>
       ) : (
-        <AddTransaction>
-          Add your first transaction.
-          <AddTransactionButton />
-        </AddTransaction>
+        <AddTransaction>Add your first transaction.</AddTransaction>
       )}
     </TableContainer>
   );

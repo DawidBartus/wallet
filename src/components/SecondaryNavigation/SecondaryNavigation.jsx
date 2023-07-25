@@ -29,7 +29,7 @@ const IconHolder = styled(Box)`
   flex-direction: column;
   align-items: flex-start;
   padding-bottom: 13px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     flex-direction: row;
     justify-content: center;
   }

@@ -13,6 +13,10 @@ const transactionSlice = createSlice({
         (transaction) => transaction.id !== removeItemID
       );
     },
+    addTransaction: (state, action) => {
+      const newTransaction = action.payload;
+      state.transactions.push(newTransaction);
+    },
     getBalance: (state) => {
       const allIncome = state.transactions.filter(
         (transaction) => transaction.type === true
@@ -33,5 +37,6 @@ const transactionSlice = createSlice({
   },
 });
 
-export const { removeTransaction, getBalance } = transactionSlice.actions;
+export const { removeTransaction, addTransaction, getBalance } =
+  transactionSlice.actions;
 export default transactionSlice.reducer;

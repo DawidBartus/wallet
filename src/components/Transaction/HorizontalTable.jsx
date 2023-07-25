@@ -20,7 +20,7 @@ const HorizontalTable = (props) => {
   const dataObject = useSelector((state) => state.transaction.transactions);
   const { edit, remove } = props;
   return (
-    <ContainerMui style={{ maxHeight: "750px", overflowX: "auto" }}>
+    <ContainerMui style={{ overflowX: "auto" }}>
       {dataObject.length ? (
         <Table style={{ width: "100%" }}>
           <TableHead>
@@ -30,7 +30,6 @@ const HorizontalTable = (props) => {
               <TableHeading>Category</TableHeading>
               <TableHeading>Comment</TableHeading>
               <TableHeading>Sum</TableHeading>
-              <TableHeading></TableHeading>
               <TableHeading></TableHeading>
             </HeaderTableRow>
           </TableHead>
@@ -51,10 +50,8 @@ const HorizontalTable = (props) => {
                 </TableData>
                 <TableData>
                   <EditIcon onClick={edit} />
-                </TableData>
-                <TableData>
                   <TableButton variant="contained" onClick={remove}>
-                    Remove
+                    Delete
                   </TableButton>
                 </TableData>
               </BodyTableRow>

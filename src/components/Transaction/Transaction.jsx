@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { removeTransaction } from "../../Redux/transactionsSlice";
 
 const Transaction = () => {
-  const [isMobile, setMobile] = useState(window.innerWidth > 768);
+  const [isMobile, setMobile] = useState(window.innerWidth > 767);
   const dispatch = useDispatch();
 
   const handleRemove = (e) => {
@@ -24,7 +24,7 @@ const Transaction = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setMobile(window.innerWidth > 768);
+      setMobile(window.innerWidth > 767);
     };
 
     window.addEventListener("resize", handleResize);

@@ -19,7 +19,7 @@ const StyledAddButton = styled(Button)`
   }
 `;
 
-const AddTransactionButton = ({ addTransaction }) => {
+const AddTransactionButton = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

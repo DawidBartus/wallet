@@ -1,83 +1,63 @@
-import { TextField, Box } from "@mui/material";
+import { TextField, Select, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { Stack } from "@mui/system";
 import StyledTypography from "../StyledComponents/StyledTypography";
 import MaterialUISwitch from "../StyledComponents/MaterialUISwitch";
-import styled from "styled-components";
 import { DatePicker } from "@mui/x-date-pickers";
 import MainButton from "../StyledComponents/MainButton";
 import SecondaryButton from "../StyledComponents/SecondaryButton";
 import { useDispatch } from "react-redux";
 import { nanoid } from "nanoid";
 import dayjs from "dayjs";
+import { addTransaction } from "../../Redux/transactionsSlice";
+import { styled } from "@mui/material/styles";
+import AddTransactionWrapper, {
+  CommentField,
+  SelectContainer,
+  AddTransactionHeader,
+  ButtonFlexWrapper,
+  FlexWrapperBox,
+} from "./TransactionStyledComponent";
 
-const AddTransactionWrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 30px;
-  margin-top: 60px;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100vh;
-  max-height: 500px;
-  @media (min-width: 600px) {
-    width: 100%;
-    max-width: 540px;
-  }
-  @media (max-width: 600px) {
-    height: 100vh;
-    width: 100%;
-    margin-top: 0;
-  }
-`;
+const options = [
+  "Select a category",
+  "Main expenses",
+  "Products",
+  "Car",
+  "Self care",
+  "Child care",
+  "Household products",
+  "Education",
+  "Leisure",
+];
 
-const FlexWrapperBox = styled(Box)`
-  margin: 0;
-  padding: 0 20px;
-  display: flex;
-  text-align: center;
-  width: calc(100% - 40px);
-  max-width: 394px;
-  @media (max-width: 600px) {
-    flex-direction: column;
-  }
-  @media (min-width: 601px) {
-    flex-direction: row;
-    gap: 32px;
-  }
-`;
-const ButtonFlexWrapper = styled(Box)`
-  width: calc(100% - 40px);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-`;
+const CustomSelect = styled(Select)(({ theme }) => ({
+  "& .MuiPaper-root": {
+    backgroundColor: "blue",
+  },
+}));
 
-const AddTransactionHeader = styled.p`
-  color: #000;
-  margin: 0;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
-const CommentField = styled(TextField)`
-  margin-top: 40px;
-  width: calc(100% - 40px);
-  min-width: 280px;
-  max-width: 392px;
-`;
+const SelectBar = ({ value, change }) => {
+  return (
+    <SelectContainer>
+      <CustomSelect value={value} onChange={change} variant="standard">
+        {options.map((item) => (
+          <MenuItem key={item} value={item}>
+            {item}
+          </MenuItem>
+        ))}
+      </CustomSelect>
+    </SelectContainer>
+  );
+};
 
 const AddTransactionForm = ({ onClose }) => {
-  const today = dayjs().format("YYYY-MM-DD");
-  console.log(today);
+  const today = dayjs();
+  const formattedDate = today.format("YYYY-MM-DD");
   const dispatch = useDispatch();
+  const [selected, setSelected] = useState("Select a category");
   const [checked, setChecked] = useState(true);
-  const [value, setValue] = useState(today);
+  const [value, setValue] = useState(formattedDate);
 
   const handleChange = (e) => {
     setChecked((prevState) => {
@@ -85,24 +65,29 @@ const AddTransactionForm = ({ onClose }) => {
       return !prevState;
     });
   };
+  const handleSelected = (e) => {
+    setSelected(e.target.value);
+  };
 
   const handleNewTransaction = (e) => {
     e.preventDefault();
     const form = e.target;
     const isIncome = checked;
     const date = value;
-    const category = isIncome ? "Income" : "expense";
-    const sum = form.amount.value;
+    const category = isIncome ? "Income" : selected;
+    const sum = parseInt(form.amount.value);
     const comment = form.comment.value;
-    console.log(value);
+    const id = nanoid();
+
     const newTransaction = {
-      id: nanoid(),
+      id,
       date,
       type: isIncome,
       category,
       comment,
       sum,
     };
+    dispatch(addTransaction(newTransaction));
     console.log(newTransaction);
   };
   return (
@@ -120,6 +105,7 @@ const AddTransactionForm = ({ onClose }) => {
           Expense
         </StyledTypography>
       </Stack>
+      {checked ? "" : <SelectBar value={selected} change={handleSelected} />}
       <FlexWrapperBox>
         <TextField
           required

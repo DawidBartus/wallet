@@ -1,9 +1,7 @@
 import { Modal } from "@mui/material";
-import AddTransactionForm from "./AddTransactionForm";
 
-const ModalAddTransaction = (props) => {
-  const { open, close } = props;
-
+const EditTransaction = ({ open, close, toChange }) => {
+  console.log("edit", toChange);
   return (
     <Modal open={open} onClose={close}>
       <div
@@ -14,10 +12,10 @@ const ModalAddTransaction = (props) => {
           justifyContent: "center",
         }}
       >
-        <AddTransactionForm onClose={close} />
+        <p>{toChange?.sum}</p>
       </div>
     </Modal>
   );
 };
 
-export default ModalAddTransaction;
+export default EditTransaction;

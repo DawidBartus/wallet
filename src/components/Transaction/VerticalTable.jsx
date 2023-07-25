@@ -4,6 +4,7 @@ import { ReactComponent as EditIcon } from "../images/edit.svg";
 import React from "react";
 import { useSelector } from "react-redux";
 import AddTransaction from "../StyledComponents/AddTransaction";
+import EditTransaction from "../EditTransaction/EditTransaction";
 
 const TableContainer = styled.div`
   position: relative;
@@ -101,7 +102,7 @@ const TableRow = styled.tr`
 
 const VerticalTable = (props) => {
   const dataObject = useSelector((state) => state.transaction.transactions);
-  const { edit, remove } = props;
+  const { edit, remove, open, close } = props;
   return (
     <TableContainer>
       {dataObject.length ? (
@@ -128,15 +129,11 @@ const VerticalTable = (props) => {
                     <Th type={typeToString}>Comment:</Th>
                     <Td>{comment}</Td>
                   </TableRow>
-                  <TableRow style={{ marginBottom: "20px" }}>
+                  <TableRow>
                     <Th type={typeToString}>Sum:</Th>
                     <Td>{sum}</Td>
                   </TableRow>
-                  <TableRow
-                    style={{ marginBottom: "20px" }}
-                    className="lastOfTh BodyTableRow"
-                    id={id}
-                  >
+                  <TableRow className="lastOfTh BodyTableRow" id={id}>
                     <Th style={{ border: "0" }} type={typeToString}>
                       <TableButton variant="contained" onClick={remove}>
                         Delete

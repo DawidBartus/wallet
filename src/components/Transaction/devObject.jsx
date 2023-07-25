@@ -2,7 +2,7 @@ let dataObjects = {
   saldo: 0,
   transactions: [
     {
-      id: 576893,
+      id: "1Yi17-CjoJFuP96eibN80",
       date: "2023-07-26",
       type: false,
       category: "Main expenses",
@@ -10,7 +10,7 @@ let dataObjects = {
       sum: 150,
     },
     {
-      id: 724613,
+      id: "724613",
       date: "2023-07-27",
       type: true,
       category: "Car",
@@ -18,7 +18,7 @@ let dataObjects = {
       sum: 500,
     },
     {
-      id: 982314,
+      id: "982314",
       date: "2023-07-28",
       type: true,
       category: "Main expenses",
@@ -26,7 +26,7 @@ let dataObjects = {
       sum: 300,
     },
     {
-      id: 732198,
+      id: "732198",
       date: "2023-07-29",
       type: false,
       category: "Self care",
@@ -34,7 +34,7 @@ let dataObjects = {
       sum: 400,
     },
     {
-      id: 541936,
+      id: "541936",
       date: "2023-07-30",
       type: true,
       category: "Products",
@@ -42,7 +42,7 @@ let dataObjects = {
       sum: 350,
     },
     {
-      id: 103785,
+      id: "103785",
       date: "2023-07-31",
       type: false,
       category: "Main expenses",
@@ -50,7 +50,7 @@ let dataObjects = {
       sum: 100,
     },
     {
-      id: 203498,
+      id: "203498",
       date: "2023-08-01",
       type: true,
       category: "Car",
@@ -58,7 +58,7 @@ let dataObjects = {
       sum: 600,
     },
     {
-      id: 428935,
+      id: "428935",
       date: "2023-08-02",
       type: false,
       category: "Household products",
@@ -66,7 +66,7 @@ let dataObjects = {
       sum: 200,
     },
     {
-      id: 315287,
+      id: "315287",
       date: "2023-08-03",
       type: true,
       category: "Main expenses",
@@ -74,7 +74,7 @@ let dataObjects = {
       sum: 450,
     },
     {
-      id: 890643,
+      id: "890643",
       date: "2023-08-04",
       type: false,
       category: "Child care",

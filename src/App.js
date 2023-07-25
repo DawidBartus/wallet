@@ -14,6 +14,7 @@ import store from "./Redux/store";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import StyledFormBlurBackground from "./components/Background/FormBlurBackground";
+import AddTransactionForm from "./components/AddTransaction/AddTransactionForm";
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
               <Route
                 path="/home/devtest"
                 element={<StyledFormBlurBackground />}
+              />
+              <Route
+                path="/home/addTransaction"
+                element={<AddTransactionForm />}
               />
             </Route>
           </Route>

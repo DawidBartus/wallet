@@ -30,7 +30,7 @@ const AddTransactionForm = ({ onClose }) => {
   const [checked, setChecked] = useState(true);
   const [value, setValue] = useState(today);
 
-  const handleChange = (e) => {
+  const handleChange = () => {
     setChecked((prevState) => {
       return !prevState;
     });

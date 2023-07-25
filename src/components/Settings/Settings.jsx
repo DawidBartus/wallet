@@ -35,14 +35,14 @@ const Settings = forwardRef((props, ref) => {
             variant="outlined"
             type="submit"
             onClick={() => setOpenEmail(true)}
-            color={openEmail ? "info" : "main"}
+            color={openEmail ? "primary" : "info"}
           >
             Change email
           </SecondaryButton>
           <SecondaryButton
             variant="outlined"
             onClick={() => setOpenEmail(false)}
-            color={openEmail ? "main" : "info"}
+            color={openEmail ? "info" : "primary"}
           >
             Change password
           </SecondaryButton>

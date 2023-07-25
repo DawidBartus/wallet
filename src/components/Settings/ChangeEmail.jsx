@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const ChangeEmail = ({ active }) => {
   const [sent, setSent] = useState(false);
-  console.log("email", active);
+
   const handleSave = (e) => {
     e.preventDefault();
 

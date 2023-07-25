@@ -51,7 +51,11 @@ const Transaction = () => {
       ) : (
         <VerticalTable edit={handleEdit} remove={handleRemove} />
       )}
-      {}
+      {edit ? (
+        <EditTransaction open={open} close={handleClose} toChange={edit} />
+      ) : (
+        ""
+      )}
     </>
   );
 };

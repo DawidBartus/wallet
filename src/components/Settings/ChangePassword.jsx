@@ -8,7 +8,7 @@ import { useState } from "react";
 const ChangePassword = ({ active }) => {
   const [sent, setSent] = useState(false);
   const [visible, setVisible] = useState(false);
-  console.log("password", active);
+
   const togglePasswordVisibility = () => {
     setVisible((prevState) => !prevState);
   };

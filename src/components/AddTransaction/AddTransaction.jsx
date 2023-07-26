@@ -15,7 +15,11 @@ const StyledAddButton = styled(Button)`
   right: 10px;
   @media (min-width: 768px) {
     bottom: 40px;
-    right: 40px;
+    right: 10px;
+  }
+  @media (min-width: 1279px) {
+    bottom: 20px;
+    right: -10px;
   }
 `;
 

@@ -13,7 +13,6 @@ import MainButton from "../StyledComponents/MainButton";
 import SecondaryButton from "../StyledComponents/SecondaryButton";
 import AddTransactionWrapper, {
   CommentField,
-  AddTransactionHeader,
   ButtonFlexWrapper,
   FlexWrapperBox,
 } from "./TransactionStyledComponent";
@@ -21,6 +20,7 @@ import SelectBar from "./SelectBar";
 // Other
 import { nanoid } from "nanoid";
 import dayjs from "dayjs";
+import SectionHeader from "../StyledComponents/ModalHeader";
 
 const AddTransactionForm = ({ onClose }) => {
   const today = dayjs();
@@ -62,7 +62,7 @@ const AddTransactionForm = ({ onClose }) => {
 
   return (
     <AddTransactionWrapper onSubmit={handleNewTransaction}>
-      <AddTransactionHeader>Add transaction</AddTransactionHeader>
+      <SectionHeader>Add transaction</SectionHeader>
       <Stack direction="row" alignItems="center">
         <StyledTypography name="income" color={checked ? "#24CCA7" : "#E0E0E0"}>
           Income

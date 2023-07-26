@@ -4,7 +4,7 @@ import { ReactComponent as EditIcon } from "../images/edit.svg";
 import React from "react";
 import { useSelector } from "react-redux";
 import AddTransaction from "../StyledComponents/AddTransaction";
-import EditTransaction from "../EditTransaction/EditTransaction";
+// import EditTransaction from "../EditTransaction/EditTransaction";
 
 const TableContainer = styled.div`
   position: relative;
@@ -16,6 +16,7 @@ const TableContainer = styled.div`
   width: 100%;
   min-width: 282px;
   max-width: 400px;
+  padding: 0;
   &::-webkit-scrollbar {
     display: none;
   }

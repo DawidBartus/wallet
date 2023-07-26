@@ -14,16 +14,15 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const BlurSection = styled(Box)`
-background-color: #E7EAF2;
-width: 100%;
-display: flex;
-justify-content: center;
-position: fixed;
-@media (min-width: 769px) {
+  background-color: #e7eaf2;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.4);
-}
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  @media (min-width: 769px) {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.4);
   }
 `;
 
@@ -70,7 +69,7 @@ const ResponsiveAppBar = () => {
         </Container>
       </AppBar>
       <Modal open={open} onClose={handleClose}>
-        <Settings />
+        <Settings close={handleClose} />
       </Modal>
       <BlurSection>
         <Outlet />

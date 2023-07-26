@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 import { Container } from "@mui/system";
+import SectionHeader from "../StyledComponents/ModalHeader";
 
 const SettingsBox = styled(Box)`
   position: relative;
@@ -22,7 +23,8 @@ const SettingsContainer = styled(Container)``;
 
 const Settings = forwardRef((props, ref) => {
   const [openEmail, setOpenEmail] = useState(true);
-
+  const { close } = props;
+  console.log(close);
   return (
     <SettingsContainer
       ref={ref}
@@ -30,6 +32,7 @@ const Settings = forwardRef((props, ref) => {
       style={{ justifyContent: "center" }}
     >
       <SettingsBox>
+        <SectionHeader>Settings</SectionHeader>
         <Box style={{ display: "flex", width: "100%", gap: "10px" }}>
           <SecondaryButton
             variant="outlined"
@@ -48,6 +51,9 @@ const Settings = forwardRef((props, ref) => {
           </SecondaryButton>
         </Box>
         {openEmail ? <ChangeEmail /> : <ChangePassword />}
+        <SecondaryButton color="info" onClick={close}>
+          Close
+        </SecondaryButton>
       </SettingsBox>
     </SettingsContainer>
   );

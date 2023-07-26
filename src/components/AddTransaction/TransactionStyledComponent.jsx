@@ -44,17 +44,6 @@ const ButtonFlexWrapper = styled(Box)`
   gap: 20px;
 `;
 
-const AddTransactionHeader = styled.p`
-  color: #000;
-  margin: 0;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
-
 const CommentField = styled(TextField)`
   margin-top: 40px;
   width: calc(100% - 40px);
@@ -66,11 +55,5 @@ const SelectContainer = styled(FormControl)`
   max-width: 393px;
 `;
 
-export {
-  CommentField,
-  SelectContainer,
-  AddTransactionHeader,
-  ButtonFlexWrapper,
-  FlexWrapperBox,
-};
+export { CommentField, SelectContainer, ButtonFlexWrapper, FlexWrapperBox };
 export default AddTransactionWrapper;

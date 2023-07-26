@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { ReactComponent as Triangles } from "../images/triangles.svg";
+import Triangles from "../images/triangles.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import getCurrencyData from "./getCurrencyData";
@@ -16,10 +16,16 @@ const TableStyledContainer = styled.ul`
   overflow-y: auto;
   position: relative;
   height: 100%;
+  min-height: 190px;
   max-height: 331px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
   li:first-child {
-    background-color: rgb(255 255 255 / 22%);
+    background-color: #6e78e8;
     margin-bottom: 16px;
+    position: sticky;
+    top: 0;
   }
   li:last-of-type {
     margin-bottom: 20px;
@@ -32,7 +38,8 @@ const TableStyledContainer = styled.ul`
   @media (max-width: 767px) {
     display: none;
     margin-top: 15px;
-    max-height: 174px;
+    width: 100%;
+    max-height: 331px;
   }
   &::-webkit-scrollbar {
     display: none;
@@ -66,18 +73,7 @@ const StyledListElement = styled.li`
   text-align: center;
 `;
 
-const TrianglesBackground = styled(Triangles)`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  path {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-`;
+const currencyDataFetched = await getCurrencyData();
 
 const Currency = () => {
   const location = useLocation();
@@ -100,23 +96,26 @@ const Currency = () => {
     };
   }, [navigate, locationCurrency]);
 
-  const rows = getCurrencyData();
-
   return (
-    <TableStyledContainer style={{ display: locationCurrency ? "block" : "" }}>
+    <TableStyledContainer
+      style={{
+        display: locationCurrency ? "block" : "",
+        backgroundImage: `url(${Triangles})`,
+      }}
+    >
       <StyledListElement>
         <StyledHeaderParagraph>Currency</StyledHeaderParagraph>
         <StyledHeaderParagraph>Purchase</StyledHeaderParagraph>
         <StyledHeaderParagraph>Sale</StyledHeaderParagraph>
       </StyledListElement>
-      {rows.map((item) => (
+      {currencyDataFetched.map((item) => (
         <StyledListElement key={item.currency}>
           <StyledBodyParagraph>{item.currency}</StyledBodyParagraph>
           <StyledBodyParagraph>{item.purchase}</StyledBodyParagraph>
           <StyledBodyParagraph>{item.sale}</StyledBodyParagraph>
         </StyledListElement>
       ))}
-      <TrianglesBackground />
+      {/* <TrianglesBackground /> */}
     </TableStyledContainer>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeTransaction } from "../../Redux/transactionsSlice";
 // Components
 import VerticalTable from "./VerticalTable";
@@ -8,12 +8,12 @@ import HorizontalTable from "./HorizontalTable";
 // import EditTransaction from "../EditTransaction/EditTransaction";
 
 const Transaction = () => {
-  const dataObject = useSelector((state) => state.transaction.transactions);
+  // const dataObject = useSelector((state) => state.transaction.transactions);
 
   const [isMobile, setMobile] = useState(window.innerWidth > 767);
-  const [open, setOpen] = useState(false);
-  const [edit, setEdit] = useState();
-  const handleOpen = () => setOpen(true);
+  // const [open, setOpen] = useState(false);
+  // const [edit, setEdit] = useState();
+  // const handleOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
 
   const dispatch = useDispatch();

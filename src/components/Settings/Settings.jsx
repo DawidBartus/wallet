@@ -24,7 +24,7 @@ const SettingsContainer = styled(Container)``;
 const Settings = forwardRef((props, ref) => {
   const [openEmail, setOpenEmail] = useState(true);
   const { close } = props;
-  console.log(close);
+
   return (
     <SettingsContainer
       ref={ref}

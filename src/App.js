@@ -7,14 +7,13 @@ import ResponsiveAppBar from "./components/ResponsiveAppBar/Navbar";
 import Statistic from "./components/Statistic/Statistic";
 import Currency from "./components/Currency/Currency";
 import Settings from "./components/Settings/Settings";
-import Transaction from "./components/Transaction/Transaction";
-// import VerticalTable from "./components/Transaction/VerticalTable";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import StyledFormBlurBackground from "./components/Background/FormBlurBackground";
 import AddTransactionForm from "./components/AddTransaction/AddTransactionForm";
+import TransactionPage from "./pages/TransactionPage";
 
 function App() {
   return (
@@ -26,7 +25,7 @@ function App() {
           <Route path="/register" element={<RegisterForm />} />
           <Route element={<ResponsiveAppBar />}>
             <Route path="/home" element={<HomePage />}>
-              <Route index element={<Transaction />} />
+              <Route index element={<TransactionPage />} />
               <Route path="/home/statistic" element={<Statistic />} />
               <Route path="/home/currency" element={<Currency />} />
               <Route path="/home/settings" element={<Settings />}>

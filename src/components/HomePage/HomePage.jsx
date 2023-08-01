@@ -6,8 +6,6 @@ import Balance from "../BalanceSection/BalanceSection";
 import SecondaryNavigation from "../SecondaryNavigation/SecondaryNavigation";
 import { useEffect, useState } from "react";
 import AddTransactionButton from "../AddTransaction/AddTransaction";
-import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
 
 const NavigationWrapper = styled(Box)`
   position: relative;
